@@ -15,10 +15,10 @@ $ rails s
 ```
 
 ## カタログ設計
-[https://docs.google.com/spreadsheets/d/10fZqS5L_9HRMyg9N4S104q1hRq8VaTsu0YwZk2rmo2Q/edit?usp=sharing](https://docs.google.com/spreadsheets/d/10fZqS5L_9HRMyg9N4S104q1hRq8VaTsu0YwZk2rmo2Q/edit?usp=sharing)
+[https://docs.google.com/spreadsheets/d/10fZqS5L_9HRMyg9N4S104q1hRq8VaTsu0YwZk2rmo2Q/edit?gid=782464957#gid=782464957](https://docs.google.com/spreadsheets/d/10fZqS5L_9HRMyg9N4S104q1hRq8VaTsu0YwZk2rmo2Q/edit?gid=782464957#gid=782464957)
 
 ## テーブル定義書
-[https://docs.google.com/spreadsheets/d/10fZqS5L_9HRMyg9N4S104q1hRq8VaTsu0YwZk2rmo2Q/edit?usp=sharing](https://docs.google.com/spreadsheets/d/10fZqS5L_9HRMyg9N4S104q1hRq8VaTsu0YwZk2rmo2Q/edit?usp=sharing)
+[https://docs.google.com/spreadsheets/d/10fZqS5L_9HRMyg9N4S104q1hRq8VaTsu0YwZk2rmo2Q/edit?gid=2020033787#gid=2020033787](https://docs.google.com/spreadsheets/d/10fZqS5L_9HRMyg9N4S104q1hRq8VaTsu0YwZk2rmo2Q/edit?gid=2020033787#gid=2020033787)
 
 ## ワイヤーフレーム
 [https://cacoo.com/diagrams/Va0mRpMhJrJH3vDd/3A1F3](https://cacoo.com/diagrams/Va0mRpMhJrJH3vDd/3A1F3)
