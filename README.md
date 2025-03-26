@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 開発言語
+- Ruby 3.3.0
+- Rails 7.2.2.1
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 実行手順
+```
+$ git clone https://github.com/ti1529/CO2meter.git
+$ cd co2meter
+$ bundle install
+$ rails db:create && rails db:migrate
+$ rails s
+```
