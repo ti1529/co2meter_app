@@ -1,0 +1,32 @@
+ja:
+  activerecord:
+    models:
+      company: 企業
+    attributes:
+      company:
+        name: 企業名
+        contact_name: 担当者名
+        contact_email: 担当者メールアドレス
+        status: ステータス
+
+    errors:
+      template:
+        body: 次の項目を確認してください
+
+  common:
+    show: 詳細
+    edit: 編集
+    delete: 削除
+    back: 戻る
+
+  attributes:
+    created_at: 作成日
+    updated_at: 更新日
+
+  enums:
+    company:
+      status:
+        unsubscribed: 未契約
+        active: 契約中
+        suspended: 一時停止
+        terminated: 解約済み

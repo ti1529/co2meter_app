@@ -1,22 +1,22 @@
 <div id="<%= dom_id company %>">
   <p>
-    <strong>Name:</strong>
+    <strong><%= Company.human_attribute_name(:name) %>:</strong>
     <%= company.name %>
   </p>
 
   <p>
-    <strong>Contact name:</strong>
+    <strong><%= Company.human_attribute_name(:contact_name) %>:</strong>
     <%= company.contact_name %>
   </p>
 
   <p>
-    <strong>Contact email:</strong>
+    <strong><%= Company.human_attribute_name(:contact_email) %>:</strong>
     <%= company.contact_email %>
   </p>
 
   <p>
-    <strong>Status:</strong>
-    <%= company.status %>
+    <strong><%= Company.human_attribute_name(:status) %>:</strong>
+    <%= company.status_i18n %>
   </p>
 
 </div>

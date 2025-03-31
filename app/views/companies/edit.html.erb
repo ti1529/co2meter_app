@@ -1,6 +1,6 @@
 <% content_for :title, "Editing company" %>
 
-<h1>Editing company</h1>
+<h1><%= t(".title") %></h1>
 
 <%= render "form", company: @company %>
 
@@ -8,5 +8,5 @@
 
 <div>
   <%= link_to "Show this company", @company %> |
-  <%= link_to "Back to companies", companies_path %>
+  <%= link_to t("common.back"), company_path(@company) %>
 </div>
