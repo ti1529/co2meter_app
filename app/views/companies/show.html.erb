@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<h1><%= t(".title") %></h1>
+
+<%= render @company %>
+
+<div>
+  <%= link_to t("common.edit"), edit_company_path(@company) %> |
+  <%= link_to "Back to companies", companies_path %>
+
+  <%= button_to t("common.delete"), @company, method: :delete %>
+</div>

@@ -1,0 +1,14 @@
+ja:
+  companies:
+    link:
+      new: 新しい企業を登録
+      index: 企業一覧
+    index:
+      title: 企業一覧
+    new:
+      title: 企業登録
+    show:
+      title: 企業詳細
+    edit:
+      title: 企業編集
+

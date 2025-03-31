@@ -1,0 +1,33 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Companies" %>
+
+<h1><%= t ".title" %></h1>
+
+
+<table>
+  <thead>
+    <tr>
+      <th><%= Company.human_attribute_name(:name) %></th>
+      <th><%= Company.human_attribute_name(:status) %></th>
+      <th><%= t("attributes.created_at") %></th>
+
+      <th ></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @companies.each do |company| %>
+      <tr>
+        <td><%= company.name %></td>
+        <td><%= company.status_i18n %></td>
+        <td><%= company.created_at.strftime("%F") %></td>
+
+        <td><%= link_to t("common.show"), company %></td>
+        <td><%= link_to t("common.edit"), edit_company_path(company) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t("companies.link.new"), new_company_path %>
