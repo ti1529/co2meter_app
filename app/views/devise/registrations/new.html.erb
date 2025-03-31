@@ -26,6 +26,12 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <%# 仮置き admin/userの実装まで %>
+  <div class="field">
+    <%= f.label :admin %><br />
+    <%= f.check_box :admin, { autocomplete: "admin" }, "true", "false" %>
+  </div>
+
   <div class="actions">
     <%= f.submit t('.sign_up') %>
   </div>

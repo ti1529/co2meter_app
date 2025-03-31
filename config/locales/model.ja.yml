@@ -12,6 +12,7 @@ ja:
       user:
         name: ユーザ名
         email: メールアドレス
+        admin: 管理者権限
 
     errors:
       template:
