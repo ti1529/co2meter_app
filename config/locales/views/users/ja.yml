@@ -1,6 +1,9 @@
 ja:
   devise:
     registrations:
+      new:
+        title: ユーザ登録
+        sign_up: 登録する
       edit:
         title: アカウント編集
         update: 更新する

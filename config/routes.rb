@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    reistrarions: "users/registrations"
+    registrations: "users/registrations"
   }
 
   root "users#index" # ダッシュボード作成までの仮置き
