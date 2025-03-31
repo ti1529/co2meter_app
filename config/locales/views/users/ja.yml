@@ -12,6 +12,7 @@ ja:
     link:
       new: 新しいユーザを登録
       index: ユーザ一覧
+      show: アカウント詳細
     index:
       title: ユーザ一覧
     new:

@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
 
   # ログイン済みのユーザのみアクセスを許可
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
