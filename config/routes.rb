@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root "companies#index" # ダッシュボード作成までの仮置き
+  devise_for :users, controllers: {
+    reistrarions: "users/registrations"
+  }
+
+  root "users#index" # ダッシュボード作成までの仮置き
 
   resources :companies
+  resources :users, only: [ :index, :show ]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
