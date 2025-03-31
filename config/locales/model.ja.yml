@@ -12,6 +12,11 @@ ja:
     errors:
       template:
         body: 次の項目を確認してください
+      models:
+        company:
+          attributes:
+            contact_email:
+              invalid: が正しくありません
 
   common:
     show: 詳細
