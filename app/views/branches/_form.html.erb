@@ -57,10 +57,7 @@
     <%= form.text_field :address_line2 %>
   </div>
 
-  <div>
-    <%= form.label :company_id, style: "display: block" %>
-    <%= form.text_field :company_id %>
-  </div>
+  <%= form.hidden_field :company_id, value: current_user.company_id %>
 
   <div>
     <%= form.submit %>
