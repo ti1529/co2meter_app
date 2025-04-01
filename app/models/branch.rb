@@ -1,4 +1,5 @@
 class Branch < ApplicationRecord
+  has_many :branch_fiscal_year_stats, dependent: :destroy
   belongs_to :company
 
   validates :name, presence: true, length: { maximum: 255 }
