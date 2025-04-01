@@ -1,0 +1,44 @@
+<h2><%= t('.title') %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <%= f.hidden_field :company_id, value: current_user.company_id %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <%# 仮置き admin/userの実装まで %>
+  <div class="field">
+    <%= f.label :admin %><br />
+    <%= f.check_box :admin, { autocomplete: "admin" }, "true", "false" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit t('.sign_up') %>
+  </div>
+<% end %>
+
+<% unless user_signed_in? %>
+  <%= render "devise/shared/links" %>
+<% end %>

@@ -18,6 +18,27 @@
   </head>
 
   <body>
+    <nav>
+      <ul>
+        <% if user_signed_in? %>
+          <li><%= link_to t("companies.link.index"), companies_path, id: "companies-index" %></li>
+          <li><%= link_to "ダッシュボード（仮）" %></li>
+          <li><%= link_to "支店一覧（仮）" %></li>
+          <li><%= link_to t("users.link.show"), user_path(current_user.id), id: "user-show" %></li>
+          <li><%= link_to t("users.link.index"), users_path, id: "users-index" %></li>
+          <li><%= link_to "排出係数一覧（仮）" %></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, id: "sign-out" %></li>
+        <% end %>
+
+      </ul>
+    </nav>
+
+
+
+
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

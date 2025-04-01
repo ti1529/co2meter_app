@@ -2,12 +2,17 @@ ja:
   activerecord:
     models:
       company: 企業
+      user: ユーザ
     attributes:
       company:
         name: 企業名
         contact_name: 担当者名
         contact_email: 担当者メールアドレス
         status: ステータス
+      user:
+        name: ユーザ名
+        email: メールアドレス
+        admin: 管理者権限
 
     errors:
       template:

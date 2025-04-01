@@ -1,0 +1,23 @@
+ja:
+  devise:
+    registrations:
+      new:
+        title: ユーザ登録
+        sign_up: 登録する
+      edit:
+        title: アカウント編集
+        update: 更新する
+
+  users:
+    link:
+      new: 新しいユーザを登録
+      index: ユーザ一覧
+      show: アカウント詳細
+    index:
+      title: ユーザ一覧
+    new:
+      title: 
+    show:
+      title: アカウント詳細
+    edit:
+      title: 
