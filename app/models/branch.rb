@@ -4,7 +4,7 @@ class Branch < ApplicationRecord
   validates :name, presence: true, length: { maximum: 255 }
   validates :workplace_type, presence: true
   validates :city_category, presence: true
-  # validates :postcode, length: { is: 7 }
+  validates :postcode, allow_blank: true, format: { with: /[0-9]{7}/ }
   validates :prefecture, presence: true, length: { maximum: 255 }
   validates :city, presence: true, length: { maximum: 255 }
   validates :address_line1, length: { maximum: 255 }

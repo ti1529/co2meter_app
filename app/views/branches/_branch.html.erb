@@ -1,41 +1,36 @@
 <div id="<%= dom_id branch %>">
   <p>
-    <strong>Name:</strong>
+    <strong><%= Branch.human_attribute_name(:name) %>：</strong>
     <%= branch.name %>
   </p>
 
   <p>
-    <strong>Workplace type:</strong>
-    <%= branch.workplace_type %>
+    <strong><%= Branch.human_attribute_name(:workplace_type) %>：</strong>
+    <%= branch.workplace_type_i18n %>
   </p>
 
   <p>
-    <strong>City category:</strong>
-    <%= branch.city_category %>
+    <strong><%= Branch.human_attribute_name(:city_category) %>：</strong>
+    <%= branch.city_category_i18n %>
   </p>
 
   <p>
-    <strong>Postcode:</strong>
+    <strong><%= Branch.human_attribute_name(:postcode) %>：</strong>
     <%= branch.postcode %>
   </p>
 
   <p>
-    <strong>Prefecture:</strong>
-    <%= branch.prefecture %>
+    <strong><%= t("common.address") %>：</strong>
+    <%= "#{branch.prefecture} #{branch.city}" %>
   </p>
 
   <p>
-    <strong>City:</strong>
-    <%= branch.city %>
-  </p>
-
-  <p>
-    <strong>Address line1:</strong>
+    <strong><%= Branch.human_attribute_name(:address_line1) %>：</strong>
     <%= branch.address_line1 %>
   </p>
 
   <p>
-    <strong>Address line2:</strong>
+    <strong><%= Branch.human_attribute_name(:address_line2) %>：</strong>
     <%= branch.address_line2 %>
   </p>
 

@@ -19,30 +19,32 @@
   <div>
     <%= form.label :workplace_type, style: "display: block" %>
     <%= form.select :workplace_type,
-      Branch.workplace_types.keys.map { |key| [Branch.workplace_types_i18n[key], key] }
+      Branch.workplace_types.keys.map { |key| [Branch.workplace_types_i18n[key], key] },
+      { include_blank: "選択してください" }
     %>
   </div>
 
   <div>
     <%= form.label :city_category, style: "display: block" %>
     <%= form.select :city_category,
-      Branch.city_categories.keys.map { |key| [Branch.city_categories_i18n[key], key]}
+      Branch.city_categories.keys.map { |key| [Branch.city_categories_i18n[key], key]},
+      { include_blank: "選択してください" }
     %>
   </div>
 
   <div>
     <%= form.label :postcode, style: "display: block" %>
-    <%= form.text_field :postcode %>
+    <%= form.text_field :postcode, placeholder: "ハイフンは不要です" %>
   </div>
 
   <div>
     <%= form.label :prefecture, style: "display: block" %>
-    <%= form.text_field :prefecture %>
+    <%= form.text_field :prefecture, placeholder: "都道府県" %>
   </div>
 
   <div>
     <%= form.label :city, style: "display: block" %>
-    <%= form.text_field :city %>
+    <%= form.text_field :city, placeholder: "市町村" %>
   </div>
 
   <div>

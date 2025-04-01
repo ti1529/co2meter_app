@@ -1,0 +1,13 @@
+ja:
+  branches:
+    link:
+      new: 新しい支店を登録
+      index: 支店一覧
+    index:
+      title: 支店一覧
+    new:
+      title: 支店登録
+    show:
+      title: 支店詳細
+    edit:
+      title: 支店編集

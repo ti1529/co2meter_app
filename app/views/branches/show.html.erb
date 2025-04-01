@@ -1,10 +1,10 @@
-<p style="color: green"><%= notice %></p>
+<h1><%= t(".title") %></h1>
 
 <%= render @branch %>
 
 <div>
-  <%= link_to "Edit this branch", edit_branch_path(@branch) %> |
+  <%= link_to t("common.edit"), edit_branch_path(@branch) %> |
   <%= link_to "Back to branches", branches_path %>
 
-  <%= button_to "Destroy this branch", @branch, method: :delete %>
+  <%= button_to t("common.delete"), @branch, method: :delete %>
 </div>
