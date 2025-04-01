@@ -11,3 +11,10 @@ ja:
       title: 支店詳細
     edit:
       title: 支店編集
+
+    create:
+      notice: 支店を登録しました
+    update:
+      notice: 支店を更新しました
+    destroy:
+      notice: 支店を削除しました
