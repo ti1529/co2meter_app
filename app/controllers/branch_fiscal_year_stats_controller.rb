@@ -21,8 +21,9 @@ class BranchFiscalYearStatsController < ApplicationController
 
   # POST /branch_fiscal_year_stats or /branch_fiscal_year_stats.json
   def create
-    @branch_fiscal_year_stat = BranchFiscalYearStat.new(branch_fiscal_year_stat_params)
-
+    # @branch_fiscal_year_stat = BranchFiscalYearStat.new(branch_fiscal_year_stat_params)
+    @branch_fiscal_year_stat = current_user.branch_fiscal_year_stats.new(branch_fiscal_year_stat_params)
+binding.irb
     respond_to do |format|
       if @branch_fiscal_year_stat.save
         format.html { redirect_to @branch_fiscal_year_stat, notice: "Branch fiscal year stat was successfully created." }
@@ -65,6 +66,6 @@ class BranchFiscalYearStatsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def branch_fiscal_year_stat_params
-      params.require(:branch_fiscal_year_stat).permit(:fiscal_year, :branch_id, :annual_working_days, :annual_employee_count, :user_id)
+      params.require(:branch_fiscal_year_stat).permit(:fiscal_year, :branch_id, :annual_working_days, :annual_employee_count)
     end
 end
