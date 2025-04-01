@@ -1,0 +1,30 @@
+
+<% content_for :title, "Branches" %>
+
+<h1><%= t(".title") %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= Branch.human_attribute_name(:name) %></th>
+      <th><%= t("common.address") %></th>
+
+      <th ></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @branches.each do |branch| %>
+      <tr>
+        <td><%= branch.name %></td>
+        <td><%= "#{branch.prefecture} #{branch.city}" %></td>
+
+        <td><%= link_to t("common.show"), branch %></td>
+        <td><%= link_to t("common.edit"), edit_branch_path(branch) %></td>
+        <td><%= link_to "（仮）実績一覧" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t("branches.link.new"), new_branch_path %>

@@ -1,0 +1,42 @@
+<div id="<%= dom_id branch %>">
+  <p>
+    <strong><%= Branch.human_attribute_name(:name) %>：</strong>
+    <%= branch.name %>
+  </p>
+
+  <p>
+    <strong><%= Branch.human_attribute_name(:workplace_type) %>：</strong>
+    <%= branch.workplace_type_i18n %>
+  </p>
+
+  <p>
+    <strong><%= Branch.human_attribute_name(:city_category) %>：</strong>
+    <%= branch.city_category_i18n %>
+  </p>
+
+  <p>
+    <strong><%= Branch.human_attribute_name(:postcode) %>：</strong>
+    <%= branch.postcode %>
+  </p>
+
+  <p>
+    <strong><%= t("common.address") %>：</strong>
+    <%= "#{branch.prefecture} #{branch.city}" %>
+  </p>
+
+  <p>
+    <strong><%= Branch.human_attribute_name(:address_line1) %>：</strong>
+    <%= branch.address_line1 %>
+  </p>
+
+  <p>
+    <strong><%= Branch.human_attribute_name(:address_line2) %>：</strong>
+    <%= branch.address_line2 %>
+  </p>
+
+  <p>
+    <strong>Company:</strong>
+    <%= branch.company_id %>
+  </p>
+
+</div>

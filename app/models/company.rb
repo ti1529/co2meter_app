@@ -1,5 +1,6 @@
 class Company < ApplicationRecord
   has_many :users, dependent: :destroy
+  has_many :branches, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :contact_name, presence: true, length: { maximum: 255 }

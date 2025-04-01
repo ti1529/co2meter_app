@@ -1,0 +1,10 @@
+<h1><%= t(".title") %></h1>
+
+<%= render @branch %>
+
+<div>
+  <%= link_to t("common.edit"), edit_branch_path(@branch) %> |
+  <%= link_to "Back to branches", branches_path %>
+
+  <%= button_to t("common.delete"), @branch, method: :delete, data: { confirm: t(".delete_confirm")} %>
+</div>
