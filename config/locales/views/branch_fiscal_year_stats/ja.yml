@@ -1,0 +1,18 @@
+ja:
+  branch_fiscal_year_stats:
+    link:
+      new: 新しい実績を登録
+      index: 実績一覧
+    index:
+      title: 実績一覧
+    new:
+      title: 実績登録
+    edit:
+      title: 実績修正
+
+    create:
+      notice: 実績を登録しました
+    update:
+      notice: 実績を修正しました
+    destroy:
+      notice: 実績を削除しました

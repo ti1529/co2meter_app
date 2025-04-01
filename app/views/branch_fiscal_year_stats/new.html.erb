@@ -1,8 +1,8 @@
 <% content_for :title, "New branch fiscal year stat" %>
 
-<h1>New branch fiscal year stat</h1>
+<h1><%= t(".title") %></h1>
 
-<%= render "form", branch_fiscal_year_stat: @branch_fiscal_year_stat %>
+<%= render "form", branch_fiscal_year_stat: @branch_fiscal_year_stat, branches: @branches %>
 
 <br>
 

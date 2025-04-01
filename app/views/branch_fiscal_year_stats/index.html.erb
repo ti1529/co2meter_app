@@ -1,16 +1,36 @@
-<p style="color: green"><%= notice %></p>
 
 <% content_for :title, "Branch fiscal year stats" %>
 
-<h1>Branch fiscal year stats</h1>
+<h1><%= t(".title") %></h1>
 
-<div id="branch_fiscal_year_stats">
-  <% @branch_fiscal_year_stats.each do |branch_fiscal_year_stat| %>
-    <%= render branch_fiscal_year_stat %>
-    <p>
-      <%= link_to "Show this branch fiscal year stat", branch_fiscal_year_stat %>
-    </p>
-  <% end %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th><%= BranchFiscalYearStat.human_attribute_name(:fiscal_year) %></th>
+      <th><%= BranchFiscalYearStat.human_attribute_name(:branch) %></th>
+      <th><%= BranchFiscalYearStat.human_attribute_name(:annual_working_days) %></th>
+      <th><%= BranchFiscalYearStat.human_attribute_name(:annual_employee_count) %></th>
+      <th><%= BranchFiscalYearStat.human_attribute_name(:updater) %></th>
 
-<%= link_to "New branch fiscal year stat", new_branch_fiscal_year_stat_path %>
+      <th ></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @branch_fiscal_year_stats.each do |stat| %>
+      <tr>
+        <td><%= stat.fiscal_year %></td>
+        <td><%= stat.branch.name %></td>
+        <td><%= stat.annual_employee_count %></td>
+        <td><%= stat.annual_working_days %></td>
+        <td><%= stat.updater.name %></td>
+
+        <td><%= link_to t("common.adjustment"), edit_branch_fiscal_year_stat_path(stat) %></td>
+        <td><%= link_to t("common.delete"), stat, method: :delete, data: { confirm: t(".delete_confirm")}  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to t("branch_fiscal_year_stats.link.new"), new_branch_fiscal_year_stat_path %>

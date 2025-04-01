@@ -4,6 +4,7 @@ ja:
       company: 企業
       user: ユーザ
       branch: 支店
+      branch_fiscal_year_stat: 各支店の年度別実績
     attributes:
       company:
         name: 企業名
@@ -23,6 +24,13 @@ ja:
         city: 市町村
         address_line1: 番地以降
         address_line2: 建物名
+      branch_fiscal_year_stat:
+        fiscal_year: 年度
+        branch: 支店名
+        annual_working_days: 年間勤務日数
+        annual_employee_count: 従業員数
+        updater: 更新者
+
 
     errors:
       template:
@@ -59,9 +67,15 @@ ja:
         small_city_b: 小都市B
         rural: 町村
 
+  helpers:
+    submit:
+      branch_fiscal_year_stat:
+        update: 修正する
+
   common:
     show: 詳細
     edit: 編集
+    adjustment: 修正
     delete: 削除
     back: 戻る
     address: 住所

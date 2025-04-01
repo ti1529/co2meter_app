@@ -1,6 +1,6 @@
 class BranchFiscalYearStat < ApplicationRecord
   belongs_to :branch
-  belongs_to :user
+  belongs_to :updater, class_name: "User", foreign_key: "user_id"
 
   validates :fiscal_year, presence: true, length: { is: 4 }
   validates :branch_id, presence: true

@@ -13,22 +13,27 @@
 
   <div>
     <%= form.label :fiscal_year, style: "display: block" %>
-    <%= form.text_field :fiscal_year %>
+    <%= form.select :fiscal_year, (2000..2100).map(&:to_s), selected: Time.current.year.to_s
+      
+      
+    %>
   </div>
 
   <div>
-    <%= form.label :branch_id, style: "display: block" %>
-    <%= form.text_field :branch_id %>
+    <%= form.label :branch_id, BranchFiscalYearStat.human_attribute_name(:branch), style: "display: block" %>
+    <%= form.select :branch_id,
+      branches.map { |branch| [ branch.name, branch.id] } 
+    %>
   </div>
 
   <div>
     <%= form.label :annual_working_days, style: "display: block" %>
-    <%= form.number_field :annual_working_days %>
+    <%= form.number_field :annual_working_days, in: 0..365 %>
   </div>
 
   <div>
     <%= form.label :annual_employee_count, style: "display: block" %>
-    <%= form.number_field :annual_employee_count %>
+    <%= form.number_field :annual_employee_count, min: 0 %>
   </div>
 
   <div>
