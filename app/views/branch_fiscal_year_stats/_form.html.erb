@@ -1,0 +1,42 @@
+<%= form_with(model: branch_fiscal_year_stat) do |form| %>
+  <% if branch_fiscal_year_stat.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(branch_fiscal_year_stat.errors.count, "error") %> prohibited this branch_fiscal_year_stat from being saved:</h2>
+
+      <ul>
+        <% branch_fiscal_year_stat.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :fiscal_year, style: "display: block" %>
+    <%= form.text_field :fiscal_year %>
+  </div>
+
+  <div>
+    <%= form.label :branch_id, style: "display: block" %>
+    <%= form.text_field :branch_id %>
+  </div>
+
+  <div>
+    <%= form.label :annual_working_days, style: "display: block" %>
+    <%= form.number_field :annual_working_days %>
+  </div>
+
+  <div>
+    <%= form.label :annual_employee_count, style: "display: block" %>
+    <%= form.number_field :annual_employee_count %>
+  </div>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

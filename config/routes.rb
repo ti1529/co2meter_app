@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :branch_fiscal_year_stats
   resources :branches
   devise_for :users, controllers: {
     registrations: "users/registrations"
