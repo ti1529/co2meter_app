@@ -74,6 +74,7 @@ ja:
 
   confirmations:
     delete:
+      company: 本当に「%{company_name}」を削除しますか？
       branch: 本当に「%{branch_name}」を削除しますか？
 
   common:
