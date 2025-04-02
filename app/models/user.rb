@@ -4,8 +4,7 @@ class User < ApplicationRecord
   has_many :branch_fiscal_year_stats, dependent: :destroy
   belongs_to :company
 
+  validates :name, presence: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  validates :name, presence: true
 end

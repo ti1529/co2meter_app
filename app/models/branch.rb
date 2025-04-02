@@ -10,7 +10,6 @@ class Branch < ApplicationRecord
   validates :city, presence: true, length: { maximum: 255 }
   validates :address_line1, length: { maximum: 255 }
   validates :address_line2, length: { maximum: 255 }
-  validates :company_id, presence: true
 
   enum workplace_type: {
     office: 0,
