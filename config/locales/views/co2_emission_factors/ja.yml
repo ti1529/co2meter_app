@@ -1,7 +1,7 @@
 ja:
   co2_emission_factors:
     link:
-      new: 新しい支店を登録
+      new: 新しい排出係数を登録
       index: 排出係数一覧
     index:
       title: 排出係数一覧
