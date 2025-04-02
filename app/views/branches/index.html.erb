@@ -21,7 +21,7 @@
 
         <td><%= link_to t("common.show"), branch %></td>
         <td><%= link_to t("common.edit"), edit_branch_path(branch) %></td>
-        <td><%= link_to "（仮）実績一覧" %></td>
+        <td><%= link_to t("branch_fiscal_year_stats.link.index"), branch_fiscal_year_stats_path %></td>
       </tr>
     <% end %>
   </tbody>

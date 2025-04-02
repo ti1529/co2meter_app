@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @branch_fiscal_year_stat %>
+
+<div>
+  <%= link_to "Edit this branch fiscal year stat", edit_branch_fiscal_year_stat_path(@branch_fiscal_year_stat) %> |
+  <%= link_to "Back to branch fiscal year stats", branch_fiscal_year_stats_path %>
+
+  <%= button_to "Destroy this branch fiscal year stat", @branch_fiscal_year_stat, method: :delete %>
+</div>
