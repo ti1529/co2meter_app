@@ -1,0 +1,50 @@
+<%= form_with(model: co2_emission_factor) do |form| %>
+  <% if co2_emission_factor.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(co2_emission_factor.errors.count, "error") %> prohibited this co2_emission_factor from being saved:</h2>
+
+      <ul>
+        <% co2_emission_factor.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :fiscal_year, style: "display: block" %>
+    <%= form.select :fiscal_year, (2000..2100).map(&:to_s), selected: Time.current.year.to_s %>
+
+  </div>
+
+  <div>
+    <%= form.label :workplace_type, style: "display: block" %>
+    <%= form.select :workplace_type,
+      Branch.workplace_types.keys.map { |key| [Branch.workplace_types_i18n[key], key] },
+      { include_blank: "選択してください" }
+    %>
+  </div>
+
+  <div>
+    <%= form.label :city_category, style: "display: block" %>
+    <%= form.select :city_category,
+      Branch.city_categories.keys.map { |key| [Branch.city_categories_i18n[key], key]},
+      { include_blank: "選択してください" }
+    %>
+
+  </div>
+
+  <div>
+    <%= form.label :co2_emission_factor, style: "display: block" %>
+    <%= form.number_field :co2_emission_factor, min: 0 %>
+  </div>
+
+  <div>
+    <%= form.label :co2_emission_factor_unit, style: "display: block" %>
+    <%= form.select :co2_emission_factor_unit,["kgCO2/人・日"] %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

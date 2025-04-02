@@ -1,0 +1,18 @@
+ja:
+  co2_emission_factors:
+    link:
+      new: 新しい排出係数を登録
+      index: 排出係数一覧
+    index:
+      title: 排出係数一覧
+    new:
+      title: 排出係数登録
+    edit:
+      title: 排出係数編集
+
+    create:
+      notice: 排出係数を登録しました
+    update:
+      notice: 排出係数を更新しました
+    destroy:
+      notice: 排出係数を削除しました

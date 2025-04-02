@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_04_01_061205) do
+ActiveRecord::Schema[7.2].define(version: 2025_04_02_030202) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,6 +39,16 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_01_061205) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_branches_on_company_id"
+  end
+
+  create_table "co2_emission_factors", force: :cascade do |t|
+    t.string "fiscal_year", limit: 4, null: false
+    t.integer "workplace_type", null: false
+    t.integer "city_category", null: false
+    t.float "co2_emission_factor", null: false
+    t.string "co2_emission_factor_unit", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "companies", force: :cascade do |t|

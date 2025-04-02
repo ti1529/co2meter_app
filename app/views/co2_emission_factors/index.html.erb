@@ -1,0 +1,41 @@
+
+<% content_for :title, "Co2 emission factors" %>
+
+<h1><%= t(".title") %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= Co2EmissionFactor.human_attribute_name(:fiscal_year) %></th>
+      <th><%= Co2EmissionFactor.human_attribute_name(:workplace_type) %></th>
+      <th><%= Co2EmissionFactor.human_attribute_name(:city_category) %></th>
+      <th><%= Co2EmissionFactor.human_attribute_name(:co2_emission_factor) %></th>
+      <th><%= Co2EmissionFactor.human_attribute_name(:co2_emission_factor_unit) %></th>
+
+      <th ></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @co2_emission_factors.each do |factor| %>
+      <tr>
+        <td><%= factor.fiscal_year %></td>
+        <td><%= factor.workplace_type_i18n %></td>
+        <td><%= factor.city_category_i18n %></td>
+        <td><%= factor.co2_emission_factor %></td>
+        <td><%= factor.co2_emission_factor_unit %></td>
+
+        <td><%= link_to t("common.edit"), edit_co2_emission_factor_path(factor) %></td>
+        <td><%= link_to t("common.delete"), factor, data: {
+          turbo_method: :delete,
+          turbo_confirm: t("confirmations.delete.co2_emission_factor", 
+            fiscal_year: factor.fiscal_year,
+            workplace_type: factor.workplace_type_i18n,
+            city_category: factor.city_category_i18n)
+        } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t("co2_emission_factors.link.new"), new_co2_emission_factor_path %>

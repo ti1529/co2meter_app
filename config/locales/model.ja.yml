@@ -30,7 +30,12 @@ ja:
         annual_working_days: 年間勤務日数
         annual_employee_count: 従業員数
         updater: 更新者
-
+      co2_emission_factor:
+        fiscal_year: 年度
+        workplace_type: 勤務形態
+        city_category: 都市区分
+        co2_emission_factor: CO2排出係数（数値）
+        co2_emission_factor_unit: CO2排出係数（単位）
 
     errors:
       template:
@@ -66,6 +71,16 @@ ja:
         small_city_a: 小都市A
         small_city_b: 小都市B
         rural: 町村
+    co2_emission_factor:
+      workplace_type:
+        office: オフィス
+        factory: 工場
+      city_category:
+        major_city: 大都市
+        medium_city: 中都市
+        small_city_a: 小都市A
+        small_city_b: 小都市B
+        rural: 町村
 
   helpers:
     submit:
@@ -77,6 +92,11 @@ ja:
       company: 本当に「%{company_name}」を削除しますか？
       branch: 本当に「%{branch_name}」を削除しますか？
       branch_fiscal_year_stat: 本当に「%{branch_name}の%{fiscal_year}年度実績」を削除しますか？
+      co2_emission_factor: |
+        本当にこの排出係数を削除しますか？
+        年度：      %{fiscal_year}
+        勤務形態：%{workplace_type}
+        都市区分：%{city_category}
 
   common:
     show: 詳細
