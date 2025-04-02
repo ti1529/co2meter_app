@@ -72,6 +72,10 @@ ja:
       branch_fiscal_year_stat:
         update: 修正する
 
+  confirmations:
+    delete:
+      branch: 本当に「%{branch_name}」を削除しますか？
+
   common:
     show: 詳細
     edit: 編集
