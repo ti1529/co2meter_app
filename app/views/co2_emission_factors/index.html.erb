@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Co2 emission factors" %>
+
+<h1>Co2 emission factors</h1>
+
+<div id="co2_emission_factors">
+  <% @co2_emission_factors.each do |co2_emission_factor| %>
+    <%= render co2_emission_factor %>
+    <p>
+      <%= link_to "Show this co2 emission factor", co2_emission_factor %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New co2 emission factor", new_co2_emission_factor_path %>

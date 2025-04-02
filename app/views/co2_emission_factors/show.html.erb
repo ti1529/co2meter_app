@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @co2_emission_factor %>
+
+<div>
+  <%= link_to "Edit this co2 emission factor", edit_co2_emission_factor_path(@co2_emission_factor) %> |
+  <%= link_to "Back to co2 emission factors", co2_emission_factors_path %>
+
+  <%= button_to "Destroy this co2 emission factor", @co2_emission_factor, method: :delete %>
+</div>

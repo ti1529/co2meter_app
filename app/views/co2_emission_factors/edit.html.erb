@@ -1,0 +1,12 @@
+<% content_for :title, "Editing co2 emission factor" %>
+
+<h1>Editing co2 emission factor</h1>
+
+<%= render "form", co2_emission_factor: @co2_emission_factor %>
+
+<br>
+
+<div>
+  <%= link_to "Show this co2 emission factor", @co2_emission_factor %> |
+  <%= link_to "Back to co2 emission factors", co2_emission_factors_path %>
+</div>
