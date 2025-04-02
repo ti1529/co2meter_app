@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :co2_emission_factors
+  resources :co2_emission_factors, only: [ :index, :new, :create, :edit, :update, :destroy ]
   resources :branch_fiscal_year_stats, only: [ :index, :new, :create, :edit, :update, :destroy ]
   resources :branches
   devise_for :users, controllers: {

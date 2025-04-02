@@ -1,13 +1,9 @@
 class Co2EmissionFactorsController < ApplicationController
-  before_action :set_co2_emission_factor, only: %i[ show edit update destroy ]
+  before_action :set_co2_emission_factor, only: %i[ edit update destroy ]
 
   # GET /co2_emission_factors or /co2_emission_factors.json
   def index
     @co2_emission_factors = Co2EmissionFactor.all
-  end
-
-  # GET /co2_emission_factors/1 or /co2_emission_factors/1.json
-  def show
   end
 
   # GET /co2_emission_factors/new
@@ -25,8 +21,8 @@ class Co2EmissionFactorsController < ApplicationController
 
     respond_to do |format|
       if @co2_emission_factor.save
-        format.html { redirect_to @co2_emission_factor, notice: "Co2 emission factor was successfully created." }
-        format.json { render :show, status: :created, location: @co2_emission_factor }
+        format.html { redirect_to co2_emission_factors_path, notice: t(".notice") }
+        format.json { render :index, status: :created, location: @co2_emission_factor }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @co2_emission_factor.errors, status: :unprocessable_entity }
@@ -38,8 +34,8 @@ class Co2EmissionFactorsController < ApplicationController
   def update
     respond_to do |format|
       if @co2_emission_factor.update(co2_emission_factor_params)
-        format.html { redirect_to @co2_emission_factor, notice: "Co2 emission factor was successfully updated." }
-        format.json { render :show, status: :ok, location: @co2_emission_factor }
+        format.html { redirect_to co2_emission_factors_path, notice: t(".notice") }
+        format.json { render :index, status: :ok, location: @co2_emission_factor }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @co2_emission_factor.errors, status: :unprocessable_entity }
@@ -52,7 +48,7 @@ class Co2EmissionFactorsController < ApplicationController
     @co2_emission_factor.destroy!
 
     respond_to do |format|
-      format.html { redirect_to co2_emission_factors_path, status: :see_other, notice: "Co2 emission factor was successfully destroyed." }
+      format.html { redirect_to co2_emission_factors_path, status: :see_other, notice: t(".notice") }
       format.json { head :no_content }
     end
   end
