@@ -12,3 +12,11 @@ ja:
     edit:
       title: 企業編集
 
+    create:
+      notice: 企業情報を登録しました
+    update:
+      notice: 企業情報を更新しました
+    destroy:
+      notice: 企業情報を削除しました
+
+

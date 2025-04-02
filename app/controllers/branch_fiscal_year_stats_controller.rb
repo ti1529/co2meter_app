@@ -9,7 +9,6 @@ class BranchFiscalYearStatsController < ApplicationController
   # GET /branch_fiscal_year_stats/new
   def new
     @branch_fiscal_year_stat = BranchFiscalYearStat.new
-    # @branches = Branch.where(company_id: current_user.company_id)
     @branches = current_user.company.branches
   end
 
