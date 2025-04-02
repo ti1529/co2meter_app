@@ -30,7 +30,12 @@ ja:
         annual_working_days: 年間勤務日数
         annual_employee_count: 従業員数
         updater: 更新者
-
+      co2_emission_factor:
+        fiscal_year: 年度
+        workplace_type: 勤務形態
+        city_category: 都市区分
+        co2_emission_factor: CO2排出係数（数値）
+        co2_emission_factor_unit: CO2排出係数（単位）
 
     errors:
       template:

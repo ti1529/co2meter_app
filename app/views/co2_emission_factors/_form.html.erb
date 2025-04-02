@@ -13,27 +13,35 @@
 
   <div>
     <%= form.label :fiscal_year, style: "display: block" %>
-    <%= form.text_field :fiscal_year %>
+    <%= form.select :fiscal_year, (2000..2100).map(&:to_s), selected: Time.current.year.to_s %>
+
   </div>
 
   <div>
     <%= form.label :workplace_type, style: "display: block" %>
-    <%= form.number_field :workplace_type %>
+    <%= form.select :workplace_type,
+      Branch.workplace_types.keys.map { |key| [Branch.workplace_types_i18n[key], key] },
+      { include_blank: "選択してください" }
+    %>
   </div>
 
   <div>
     <%= form.label :city_category, style: "display: block" %>
-    <%= form.number_field :city_category %>
+    <%= form.select :city_category,
+      Branch.city_categories.keys.map { |key| [Branch.city_categories_i18n[key], key]},
+      { include_blank: "選択してください" }
+    %>
+
   </div>
 
   <div>
     <%= form.label :co2_emission_factor, style: "display: block" %>
-    <%= form.text_field :co2_emission_factor %>
+    <%= form.number_field :co2_emission_factor, min: 0 %>
   </div>
 
   <div>
     <%= form.label :co2_emission_factor_unit, style: "display: block" %>
-    <%= form.text_field :co2_emission_factor_unit %>
+    <%= form.select :co2_emission_factor_unit,["kgCO2/人・日"] %>
   </div>
 
   <div>
