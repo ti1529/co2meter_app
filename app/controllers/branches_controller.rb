@@ -21,7 +21,7 @@ class BranchesController < ApplicationController
 
   # POST /branches or /branches.json
   def create
-    @branch = Branch.new(branch_params)
+    @branch = current_user.company.branches.new(branch_params)
 
     respond_to do |format|
       if @branch.save
@@ -65,6 +65,6 @@ class BranchesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def branch_params
-      params.require(:branch).permit(:name, :workplace_type, :city_category, :postcode, :prefecture, :city, :address_line1, :address_line2, :company_id)
+      params.require(:branch).permit(:name, :workplace_type, :city_category, :postcode, :prefecture, :city, :address_line1, :address_line2)
     end
 end
