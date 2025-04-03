@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "dashboard/index"
   resources :co2_emission_factors, only: [ :index, :new, :create, :edit, :update, :destroy ]
   resources :branch_fiscal_year_stats, only: [ :index, :new, :create, :edit, :update, :destroy ]
   resources :branches
