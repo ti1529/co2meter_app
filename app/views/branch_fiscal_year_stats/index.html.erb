@@ -21,8 +21,8 @@
       <tr>
         <td><%= stat.fiscal_year %></td>
         <td><%= stat.branch.name %></td>
-        <td><%= stat.annual_employee_count %></td>
         <td><%= stat.annual_working_days %></td>
+        <td><%= stat.annual_employee_count %></td>
         <td><%= stat.updater.name %></td>
 
         <td><%= link_to t("common.adjustment"), edit_branch_fiscal_year_stat_path(stat) %></td>

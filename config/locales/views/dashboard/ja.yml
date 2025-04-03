@@ -4,3 +4,7 @@ ja:
       index: ダッシュボード
     index:
       title: ダッシュボード
+      thead:
+        fiscal_year: 年度
+        branch_name: 支店名
+        co2_emission: CO2排出量（ton）
