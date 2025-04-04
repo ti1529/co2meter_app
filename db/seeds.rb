@@ -19,17 +19,17 @@ end
 # （仮）Co2の排出係数。動作確認後、作成データ数と実際の排出係数を修正する
 5.times do |i|
   [
-    [ (2018 + (i + 1)).to_s, 0, 0, 1, "kgCO2/人・日" ],
-    [ (2018 + (i + 1)).to_s, 0, 1, 2, "kgCO2/人・日" ],
-    [ (2018 + (i + 1)).to_s, 0, 2, 3, "kgCO2/人・日" ],
-    [ (2018 + (i + 1)).to_s, 0, 3, 4, "kgCO2/人・日" ],
-    [ (2018 + (i + 1)).to_s, 0, 4, 5, "kgCO2/人・日" ],
+    [ (2019 + i).to_s, 0, 0, 1, "kgCO2/人・日" ],
+    [ (2019 + i).to_s, 0, 1, 2, "kgCO2/人・日" ],
+    [ (2019 + i).to_s, 0, 2, 3, "kgCO2/人・日" ],
+    [ (2019 + i).to_s, 0, 3, 4, "kgCO2/人・日" ],
+    [ (2019 + i).to_s, 0, 4, 5, "kgCO2/人・日" ],
 
-    [ (2018 + (i + 1)).to_s, 1, 0, 6, "kgCO2/人・日" ],
-    [ (2018 + (i + 1)).to_s, 1, 1, 7, "kgCO2/人・日" ],
-    [ (2018 + (i + 1)).to_s, 1, 2, 8, "kgCO2/人・日" ],
-    [ (2018 + (i + 1)).to_s, 1, 3, 9, "kgCO2/人・日" ],
-    [ (2018 + (i + 1)).to_s, 1, 4, 10, "kgCO2/人・日" ]
+    [ (2019 + i).to_s, 1, 0, 6, "kgCO2/人・日" ],
+    [ (2019 + i).to_s, 1, 1, 7, "kgCO2/人・日" ],
+    [ (2019 + i).to_s, 1, 2, 8, "kgCO2/人・日" ],
+    [ (2019 + i).to_s, 1, 3, 9, "kgCO2/人・日" ],
+    [ (2019 + i).to_s, 1, 4, 10, "kgCO2/人・日" ]
   ].each do |fiscal_year, workplace_type, city_category, co2_emission_factor, co2_emission_factor_unit|
     Co2EmissionFactor.find_or_create_by(
       { fiscal_year: fiscal_year,
@@ -77,11 +77,11 @@ Company.where(name: "会社_1").each do |company|
       city: "#{i + 1}市",
     )
 
-    2.times do |j|
+    5.times do |j|
       branch.branch_fiscal_year_stats.find_or_create_by(
-        fiscal_year: (2018 + (j + 1)).to_s,
-        annual_working_days: 195 + (j + 5),
-        annual_employee_count: 20 + (j + 5),
+        fiscal_year: (2019 + j).to_s,
+        annual_working_days: 200 + j,
+        annual_employee_count: 25 + j,
         user_id: user.id
       )
     end

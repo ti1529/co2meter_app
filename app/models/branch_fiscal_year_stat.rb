@@ -20,7 +20,7 @@ class BranchFiscalYearStat < ApplicationRecord
           workplace_type: self.branch.workplace_type,
           city_category: self.branch.city_category
         )&.co2_emission_factor
-    return "データなし" if factor.blank?
+    return 0 if factor.blank?
     (factor * self.annual_working_days * self.annual_employee_count) / 1000
   end
 end
