@@ -1,0 +1,34 @@
+<h1><%= t(".title") %></h1>
+
+<h2>グラフ追加予定_年度別の支店合計</h2>
+
+<p>年度の配列</p>
+<%= @existing_fiscal_years %>
+
+<br>
+<p>年度ごとのCO2排出量</p>
+<%= @co2_emissions_by_year %>
+
+
+
+<h2>各支店の年度別の表</h2>
+<table>
+  <thead>
+    <tr>
+      <th><%= t(".thead.fiscal_year") %></th>
+      <th><%= t(".thead.branch_name") %></th>
+      <th><%= t(".thead.co2_emission") %></th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @branch_fiscal_year_stats.each do |stat| %>
+      <tr>
+        <td><%= stat.fiscal_year %></td>
+        <td><%= stat.branch.name %></td>
+        <td><%= stat.calculated_co2_emission.round(2) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
