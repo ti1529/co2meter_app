@@ -1,5 +1,11 @@
 <h1><%= t(".title") %></h1>
 
+<h2>年度別の支店合計</h2>
+
+
+
+
+<h2>各支店の年度別の表</h2>
 <table>
   <thead>
     <tr>
@@ -7,7 +13,6 @@
       <th><%= t(".thead.branch_name") %></th>
       <th><%= t(".thead.co2_emission") %></th>
 
-      <th ></th>
     </tr>
   </thead>
 
@@ -16,15 +21,7 @@
       <tr>
         <td><%= stat.fiscal_year %></td>
         <td><%= stat.branch.name %></td>
-        <td><%= Co2EmissionFactor.find_by(
-          fiscal_year: stat.fiscal_year,
-          workplace_type: stat.branch.workplace_type,
-          city_category: stat.branch.city_category
-        )&.co2_emission_factor 
-        &.*(stat.annual_working_days)
-        &.*(stat.annual_employee_count)
-        &./(1000) %></td>
-
+        <td><%= stat.calculated_co2_emission %></td>
       </tr>
     <% end %>
   </tbody>

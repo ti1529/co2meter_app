@@ -13,4 +13,14 @@ class BranchFiscalYearStat < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     [ "branch" ]
   end
+
+  def calculated_co2_emission
+    factor =  Co2EmissionFactor.find_by(
+          fiscal_year: self.fiscal_year,
+          workplace_type: self.branch.workplace_type,
+          city_category: self.branch.city_category
+        )&.co2_emission_factor
+    return "データなし" if factor.blank?
+    (factor * self.annual_working_days * self.annual_employee_count) / 1000
+  end
 end
