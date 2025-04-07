@@ -14,7 +14,14 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "startbootstrap/styles", media: "all", "data-turbo-track": "reload" %>
+
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "startbootstrap/scripts", defer: true, "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "startbootstrap/chart-bar-demo", defer: true %>
+    <%= javascript_include_tag "startbootstrap/datatables-simple-demo", defer: true %>
+
+
   </head>
 
   <body>
