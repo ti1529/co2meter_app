@@ -5,4 +5,4 @@
 //= link startbootstrap/styles.css
 //= link startbootstrap/scripts.js
 //= link startbootstrap/chart-bar-demo.js
-//= link startbootstrap/datatables-demo.js
+//= link startbootstrap/datatables-simple-demo.js

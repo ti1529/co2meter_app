@@ -1,42 +1,3 @@
-<h1><%= t(".title") %></h1>
-
-<h2>グラフ追加予定_年度別の支店合計</h2>
-
-<!-- <p>年度の配列</p>
-<%= @existing_fiscal_years %>
-
-<br>
-<p>年度ごとのCO2排出量</p>
-<%= @co2_emissions_by_year %>
- -->
-
-
-
-
-<h2>各支店の年度別の表</h2>
-<table>
-  <thead>
-    <tr>
-      <th><%= t(".thead.fiscal_year") %></th>
-      <th><%= t(".thead.branch_name") %></th>
-      <th><%= t(".thead.co2_emission") %></th>
-
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @branch_fiscal_year_stats.each do |stat| %>
-      <tr>
-        <td><%= stat.fiscal_year %></td>
-        <td><%= stat.branch.name %></td>
-        <td><%= stat.calculated_co2_emission.round(2) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br><br><br><br>
-
 <%#　（仮）以下はbootstrap %>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
@@ -111,17 +72,14 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Dashboard</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>
-
+                        <h1 class="mt-4"><%= t(".title") %></h1>
+                        <p><%= current_user.company.name %> 様</p>
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-bar me-1"></i>
-                                        Bar Chart Example
+                                        <%= t(".bar_chart.title") %>
                                     </div>
                                     <div class="card-body">
                                         <canvas id="Co2ChartBar"
@@ -135,55 +93,32 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                DataTable Example
+                                <%= t(".data_table.title") %>
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th><%= t(".data_table.fiscal_year") %></th>
+                                            <th><%= t(".data_table.branch_name") %></th>
+                                            <th><%= t(".data_table.co2_emission") %></th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th><%= t(".data_table.fiscal_year") %></th>
+                                            <th><%= t(".data_table.branch_name") %></th>
+                                            <th><%= t(".data_table.co2_emission") %></th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                        <% @branch_fiscal_year_stats.each do |stat| %>
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
+                                            <td><%= stat.fiscal_year %></td>
+                                            <td><%= stat.branch.name %></td>
+                                            <td><%= stat.calculated_co2_emission.round(2) %></td>
                                         </tr>
-                                        <tr>
-                                            <td>Garrett Winters</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>63</td>
-                                            <td>2011/07/25</td>
-                                            <td>$170,750</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>San Francisco</td>
-                                            <td>66</td>
-                                            <td>2009/01/12</td>
-                                            <td>$86,000</td>
-                                        </tr>
+                                        <% end %>
                                     </tbody>
                                 </table>
                             </div>
