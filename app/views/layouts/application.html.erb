@@ -29,7 +29,7 @@
       <ul>
         <% if user_signed_in? %>
           <li><%= link_to t("companies.link.index"), companies_path, id: "companies-index" %></li>
-          <li><%= link_to t("dashboard.link.index"), dashboard_index_path, id: "dashboard-index" %></li>
+          <li><%= link_to t("dashboards.link.index"), dashboards_index_path, id: "dashboards-index" %></li>
           <li><%= link_to t("branches.link.index"), branches_path, id: "branches-index" %></li>
           <li><%= link_to t("users.link.show"), user_path(current_user.id), id: "user-show" %></li>
           <li><%= link_to t("users.link.index"), users_path, id: "users-index" %></li>

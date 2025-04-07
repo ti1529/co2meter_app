@@ -1,4 +1,4 @@
-class DashboardController < ApplicationController
+class DashboardsController < ApplicationController
   def index
     @q = BranchFiscalYearStat.ransack(params[:q])
     @q.sorts = [ "fiscal_year asc", "branch_id asc" ] if @q.sorts.empty?
@@ -18,5 +18,8 @@ class DashboardController < ApplicationController
 
     @total_co2_emissions = @branch_fiscal_year_stats
                             .map(&:calculated_co2_emission)
+    
+
+
   end
 end

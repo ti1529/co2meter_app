@@ -1,3 +1,16 @@
+
+
+
+<%= search_form_for @q, url: search_path, method: :get, html: { data: { turbo: false }} do |f| %>
+    <div>
+        <%= f.label :fiscal_year_cont, "年度" %>
+        <%= f.search_field :fiscal_year_cont %>
+    </div>
+
+    <%= f.submit %>
+<% end %>
+
+
 <%#　（仮）以下はbootstrap %>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
