@@ -19,7 +19,7 @@
   <div>
     <%= form.label :branch_id, BranchFiscalYearStat.human_attribute_name(:branch), style: "display: block" %>
     <%= form.select :branch_id,
-      branches.map { |branch| [ branch.name, branch.id] } 
+      branches.map { |branch| [ branch.name, branch.id] } , selected: form.object.branch_id
     %>
   </div>
 

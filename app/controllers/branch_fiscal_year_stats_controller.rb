@@ -14,7 +14,7 @@ class BranchFiscalYearStatsController < ApplicationController
 
   # GET /branch_fiscal_year_stats/new
   def new
-    @branch_fiscal_year_stat = BranchFiscalYearStat.new
+    @branch_fiscal_year_stat = BranchFiscalYearStat.new(fiscal_year: params[:fiscal_year], branch_id: params[:branch_id])
     @branches = current_user.company.branches
   end
 

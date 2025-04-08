@@ -152,7 +152,7 @@
                                                         <td><%= year %></td>
                                                         <td><%= branch.name %></td>
                                                         <td><%= %>データなし</td>
-                                                        <td><%= link_to "実績登録" , new_branch_fiscal_year_stat_path(stat) %></td>
+                                                        <td><%= link_to "実績登録" , new_branch_fiscal_year_stat_path(fiscal_year: year, branch_id: branch.id) %></td>
 
                                                     <% end %>
                                                 </tr>
