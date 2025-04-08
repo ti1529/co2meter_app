@@ -2,9 +2,19 @@
 
 
 <%= search_form_for @q, url: search_path, method: :get, html: { data: { turbo: false }} do |f| %>
+
+
     <div>
-        <%= f.label :fiscal_year_cont, "年度" %>
-        <%= f.search_field :fiscal_year_cont %>
+        <%= f.label "期間" %>
+        <%= f.select :fiscal_year_gteq, @fiscal_years, selected: @fiscal_years.min  %>
+        <span> 〜 </span>
+        <%= f.select :fiscal_year_lteq, @fiscal_years, selected: @fiscal_years.max  %>
+        
+    </div>
+
+    <div>
+        <%= f.label :branch_id_eq, "支店名" %>
+        <%= f.collection_select :branch_id_eq, @branches, :id, :name, include_blank: "指定なし"  %>
     </div>
 
     <%= f.submit %>
@@ -96,7 +106,7 @@
                                     </div>
                                     <div class="card-body">
                                         <canvas id="Co2ChartBar"
-                                        data-labels= "<%= @existing_fiscal_years.to_json %>"
+                                        data-labels= "<%= @selection_fiscal_years.to_json %>"
                                         data-values= "<%= @co2_emissions_by_year.to_json %>">
                                         </canvas>
                                     </div>
@@ -115,6 +125,7 @@
                                             <th><%= t(".data_table.fiscal_year") %></th>
                                             <th><%= t(".data_table.branch_name") %></th>
                                             <th><%= t(".data_table.co2_emission") %></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -125,12 +136,27 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <% @branch_fiscal_year_stats.each do |stat| %>
-                                        <tr>
-                                            <td><%= stat.fiscal_year %></td>
-                                            <td><%= stat.branch.name %></td>
-                                            <td><%= stat.calculated_co2_emission.round(2) %></td>
-                                        </tr>
+
+                                        <% @selection_branches.each do |branch| %>
+                                            <% @selection_fiscal_years.each do |year| %>
+                                                <% stat = branch.branch_fiscal_year_stats.find_by(fiscal_year: year) %>
+                                                <tr>
+                                                    <% if stat.present? %>
+
+                                                        <td><%= stat.fiscal_year %></td>
+                                                        <td><%= stat.branch.name %></td>
+                                                        <td><%= stat.calculated_co2_emission.round(2) %></td>
+                                                        <td><%= link_to "実績修正" , edit_branch_fiscal_year_stat_path(stat) %></td>
+
+                                                    <% else %>
+                                                        <td><%= year %></td>
+                                                        <td><%= branch.name %></td>
+                                                        <td><%= %>データなし</td>
+                                                        <td><%= link_to "実績登録" , new_branch_fiscal_year_stat_path(stat) %></td>
+
+                                                    <% end %>
+                                                </tr>
+                                            <% end %>
                                         <% end %>
                                     </tbody>
                                 </table>

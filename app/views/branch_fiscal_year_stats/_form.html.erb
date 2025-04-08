@@ -13,7 +13,7 @@
 
   <div>
     <%= form.label :fiscal_year, style: "display: block" %>
-    <%= form.select :fiscal_year, (2000..2100).map(&:to_s), selected: Time.current.year.to_s %>
+    <%= form.select :fiscal_year, (2000..2100).map(&:to_s), selected: form.object.fiscal_year.presence || Time.current.year.to_s %>
   </div>
 
   <div>

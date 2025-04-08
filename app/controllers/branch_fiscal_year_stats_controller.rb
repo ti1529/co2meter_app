@@ -3,7 +3,13 @@ class BranchFiscalYearStatsController < ApplicationController
 
   # GET /branch_fiscal_year_stats or /branch_fiscal_year_stats.json
   def index
-    @branch_fiscal_year_stats = BranchFiscalYearStat.all
+    @q = BranchFiscalYearStat.ransack(params[:q])
+    @q.sorts = [ "fiscal_year asc", "branch_id asc" ] if @q.sorts.empty?
+    @branch_fiscal_year_stats = @q.result(distinct: true)
+                                  .joins(:branch)
+                                  .includes(:branch)
+                                  .where(branches: { company_id: current_user.company.id })
+
   end
 
   # GET /branch_fiscal_year_stats/new
