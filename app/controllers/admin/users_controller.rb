@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  authorize_resource class: :admin_user
   before_action :set_user, only: %i[ edit update destroy ]
 
   def index
