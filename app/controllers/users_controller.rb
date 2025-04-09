@@ -12,6 +12,6 @@ class UsersController < ApplicationController
 
   def correct_user
     @user = User.find(params[:id])
-    redirect_to current_user unless current_user?(@user)
+    redirect_to current_user, notice: t("common.alert") unless current_user?(@user)
   end
 end

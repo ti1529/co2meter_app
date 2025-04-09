@@ -21,4 +21,8 @@ end
     user == current_user
   end
 
+  def current_user_company?(company)
+    company == current_user.company
+  end
+
 end

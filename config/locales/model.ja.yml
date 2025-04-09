@@ -114,7 +114,7 @@ ja:
     back: 戻る
     address: 住所
     sign_out: ログアウト
-    alert: 画面を閲覧する権限がありません
+    alert: アクセス権限がありません
     is_admin: あり
     not_admin: なし
     company_name: 所属会社名

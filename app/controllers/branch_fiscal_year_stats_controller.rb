@@ -1,4 +1,5 @@
 class BranchFiscalYearStatsController < ApplicationController
+  before_action :correct_company, only: %i[ edit update destroy]
   before_action :set_branch_fiscal_year_stat, only: %i[ edit update destroy ]
 
   # GET /branch_fiscal_year_stats or /branch_fiscal_year_stats.json
@@ -71,5 +72,11 @@ class BranchFiscalYearStatsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def branch_fiscal_year_stat_params
       params.require(:branch_fiscal_year_stat).permit(:fiscal_year, :branch_id, :annual_working_days, :annual_employee_count)
+    end
+
+    def correct_company
+      @company = BranchFiscalYearStat.find(params[:id]).branch.company
+      redirect_to root_path, notice: t("common.alert") unless current_user_company?(@company)
+
     end
 end
