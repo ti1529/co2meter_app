@@ -1,9 +1,10 @@
 class BranchesController < ApplicationController
+  before_action :correct_company, only: %i[ show edit update destroy ]
   before_action :set_branch, only: %i[ show edit update destroy ]
 
   # GET /branches or /branches.json
   def index
-    @branches = Branch.all
+    @branches = current_user.company.branches
   end
 
   # GET /branches/1 or /branches/1.json
@@ -66,5 +67,11 @@ class BranchesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def branch_params
       params.require(:branch).permit(:name, :workplace_type, :city_category, :postcode, :prefecture, :city, :address_line1, :address_line2)
+    end
+
+    def correct_company
+      @company = Branch.find(params[:id]).company
+      redirect_to root_path, notice: t("common.alert") unless current_user_company?(@company)
+
     end
 end

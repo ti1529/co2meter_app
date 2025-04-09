@@ -1,4 +1,5 @@
 class Co2EmissionFactorsController < ApplicationController
+  authorize_resource
   before_action :set_co2_emission_factor, only: %i[ edit update destroy ]
 
   # GET /co2_emission_factors or /co2_emission_factors.json

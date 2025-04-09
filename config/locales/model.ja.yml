@@ -89,14 +89,22 @@ ja:
 
   confirmations:
     delete:
-      company: 本当に「%{company_name}」を削除しますか？
-      branch: 本当に「%{branch_name}」を削除しますか？
-      branch_fiscal_year_stat: 本当に「%{branch_name}の%{fiscal_year}年度実績」を削除しますか？
+      company: 「%{company_name}」を本当に削除してよろしいですか？
+      branch: 「%{branch_name}」を本当に削除してよろしいですか？
+      branch_fiscal_year_stat: |
+        下記の実績を本当に削除してよろしいですか？
+        年度：   %{fiscal_year}
+        支店名： %{branch_name}
       co2_emission_factor: |
-        本当にこの排出係数を削除しますか？
+        下記の排出係数を本当に削除してよろしいですか？
         年度：      %{fiscal_year}
         勤務形態：%{workplace_type}
         都市区分：%{city_category}
+      user: あなたのアカウントを本当に削除してもよろしいですか？
+      admin_user: |
+        下記のユーザを本当に削除してよろしいですか？
+        所属企業名： %{company_name}
+        ユーザー名： %{user_name}
 
   common:
     show: 詳細
@@ -106,4 +114,8 @@ ja:
     back: 戻る
     address: 住所
     sign_out: ログアウト
+    alert: アクセス権限がありません
+    is_admin: あり
+    not_admin: なし
+    company_name: 所属会社名
     

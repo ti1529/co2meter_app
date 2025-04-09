@@ -5,14 +5,25 @@
   <%= @user.name %>
 </p>
 
+<% if current_user.admin? %>
+  <p>
+    <strong><%= User.human_attribute_name(:company) %>:</strong>
+    <%= @user.company.name %>
+  </p>
+<% end %>
+
 <p>
   <strong><%= User.human_attribute_name(:email) %>:</strong>
   <%= @user.email %>
 </p>
 
-<div>
-  <%= link_to t("common.edit"), edit_user_registration_path(@user) %> |
-  <%= link_to "Back", users_path %>
+<% if current_user.admin? %>
+  <p>
+    <strong><%= User.human_attribute_name(:admin) %>:</strong>
+    <%= @user.admin ? t("common.is_admin"): t("common.not_admin") %>
+  </p>
+<% end %>
 
-  <%= button_to t("common.delete"), @user, method: :delete %>
+<div>
+  <%= link_to t("common.edit"), edit_user_registration_path(@user) %>
 </div>
