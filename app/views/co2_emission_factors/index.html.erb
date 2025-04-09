@@ -26,9 +26,8 @@
         <td><%= factor.co2_emission_factor_unit %></td>
 
         <td><%= link_to t("common.edit"), edit_co2_emission_factor_path(factor) %></td>
-        <td><%= link_to t("common.delete"), factor, data: {
-          turbo_method: :delete,
-          turbo_confirm: t("confirmations.delete.co2_emission_factor", 
+        <td><%= link_to t("common.delete"), factor, method: :delete, data: {
+          confirm: t("confirmations.delete.co2_emission_factor", 
             fiscal_year: factor.fiscal_year,
             workplace_type: factor.workplace_type_i18n,
             city_category: factor.city_category_i18n)
