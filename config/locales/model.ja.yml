@@ -91,7 +91,10 @@ ja:
     delete:
       company: 「%{company_name}」を本当に削除してよろしいですか？
       branch: 「%{branch_name}」を本当に削除してよろしいですか？
-      branch_fiscal_year_stat: 「%{branch_name}の%{fiscal_year}年度実績」を本当に削除してよろしいですか？
+      branch_fiscal_year_stat: |
+        下記の実績を本当に削除してよろしいですか？
+        年度：   %{fiscal_year}
+        支店名： %{branch_name}
       co2_emission_factor: |
         下記の排出係数を本当に削除してよろしいですか？
         年度：      %{fiscal_year}

@@ -26,9 +26,8 @@
         <td><%= stat.updater.name %></td>
 
         <td><%= link_to t("common.adjustment"), edit_branch_fiscal_year_stat_path(stat) %></td>
-        <td><%= link_to t("common.delete"), stat, data: {
-                  turbo_method: :delete,
-                  turbo_confirm: t("confirmations.delete.branch_fiscal_year_stat", branch_name: stat.branch.name, fiscal_year: stat.fiscal_year )
+        <td><%= link_to t("common.delete"), stat, method: :delete, data: {
+                  confirm: t("confirmations.delete.branch_fiscal_year_stat", branch_name: stat.branch.name, fiscal_year: stat.fiscal_year )
                 } %></td>
       </tr>
     <% end %>
