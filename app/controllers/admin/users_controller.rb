@@ -23,10 +23,17 @@ class Admin::UsersController < ApplicationController
   end
   
   def edit
-
+    @companies = Company.all
   end
 
   def update
+    if @user.update(user_params)
+      flash[:notice] = t(".notice")
+      redirect_to admin_users_path
+    else
+      @companies = Company.all
+      render :edit
+    end
 
   end
 

@@ -10,7 +10,10 @@ ja:
         title: ユーザ登録画面（管理者用）
         sign_up: 登録する
       edit:
-        title: 
+        title: ユーザ編集画面（管理者用）
+        update: 更新する
 
       create:
         notice: ユーザ登録が完了しました
+      update:
+        notice: ユーザ情報を更新しました
