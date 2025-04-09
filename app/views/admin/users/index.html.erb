@@ -20,7 +20,11 @@
         <td><%= user.admin ? t("common.is_admin"): t("common.not_admin")  %></td>
 
         <td><%= link_to t("common.edit"), edit_admin_user_path(user) %></td>
-        <td><%= link_to t("common.delete"), [:admin, user], method: :delete, data: { confirm: "テスト"} %></td>
+        <td><%= link_to t("common.delete"), [:admin, user], method: :delete, data: {
+                  confirm: t("confirmations.delete.admin_user",
+                              company_name: user.company.name,
+                              user_name: user.name)
+                  } %></td>
       </tr>
     <% end %>
   </tbody>

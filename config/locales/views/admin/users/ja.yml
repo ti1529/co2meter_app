@@ -17,3 +17,5 @@ ja:
         notice: ユーザ登録が完了しました
       update:
         notice: ユーザ情報を更新しました
+      destroy:
+        notice: ユーザを削除しました

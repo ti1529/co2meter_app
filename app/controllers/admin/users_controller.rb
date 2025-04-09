@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_action :set_user, only: %i[ edit update destroy ]
 
   def index
-    @users = User.all
+    @users = User.includes(:company)
   end
 
   def new
@@ -38,7 +38,13 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-
+    if @user.destroy
+      flash[:notice] = t(".notice")
+      redirect_to admin_users_path
+    else
+      @companies = Company.all
+      render :index
+    end
   end
 
   private
