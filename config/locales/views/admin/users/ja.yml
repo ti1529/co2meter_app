@@ -1,0 +1,16 @@
+ja:
+  admin:
+    users:
+      link:
+        new: 新しいユーザを登録
+        index: ユーザ一覧（管理者用）
+      index:
+        title: ユーザ一覧
+      new:
+        title: ユーザ登録画面（管理者用）
+        sign_up: 登録する
+      edit:
+        title: 
+
+      create:
+        notice: ユーザ登録が完了しました

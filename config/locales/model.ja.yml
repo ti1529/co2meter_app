@@ -107,4 +107,6 @@ ja:
     address: 住所
     sign_out: ログアウト
     alert: 画面を閲覧する権限がありません
+    is_admin: あり
+    not_admin: なし
     
