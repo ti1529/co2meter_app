@@ -48,7 +48,9 @@
 
 
       </ul>
-      <p><%= current_user.company.name %> 様</p>
+      <% if user_signed_in? %>
+        <p><%= current_user.company.name %> 様</p>
+      <% end %>
     </nav>
 
     <p class="notice"><%= notice %></p>
