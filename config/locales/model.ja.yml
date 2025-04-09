@@ -89,16 +89,17 @@ ja:
 
   confirmations:
     delete:
-      company: 本当に「%{company_name}」を削除してよろしいですか？
-      branch: 本当に「%{branch_name}」を削除してよろしいですか？
-      branch_fiscal_year_stat: 本当に「%{branch_name}の%{fiscal_year}年度実績」を削除してよろしいですか？
+      company: 「%{company_name}」を本当に削除してよろしいですか？
+      branch: 「%{branch_name}」を本当に削除してよろしいですか？
+      branch_fiscal_year_stat: 「%{branch_name}の%{fiscal_year}年度実績」を本当に削除してよろしいですか？
       co2_emission_factor: |
-        本当に下記の排出係数を削除してよろしいですか？
+        下記の排出係数を本当に削除してよろしいですか？
         年度：      %{fiscal_year}
         勤務形態：%{workplace_type}
         都市区分：%{city_category}
+      user: あなたのアカウントを本当に削除してもよろしいですか？
       admin_user: |
-        本当に下記のユーザを削除してよろしいですか？
+        下記のユーザを本当に削除してよろしいですか？
         所属企業名： %{company_name}
         ユーザー名： %{user_name}
 
@@ -113,4 +114,5 @@ ja:
     alert: 画面を閲覧する権限がありません
     is_admin: あり
     not_admin: なし
+    company_name: 所属会社名
     
