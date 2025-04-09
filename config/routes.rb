@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }
 
-  root "users#index" # ダッシュボード作成までの仮置き
+  root "dashboards#index" # ダッシュボード作成までの仮置き
 
   resources :companies
   resources :users, only: [ :index, :show ]

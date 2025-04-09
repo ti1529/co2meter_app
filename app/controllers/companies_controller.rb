@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  authorize_resource
   before_action :set_company, only: %i[ show edit update destroy ]
 
   # GET /companies or /companies.json

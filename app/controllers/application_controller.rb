@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+rescue_from CanCan::AccessDenied do |_exception|
+  redirect_to root_path, alert: t("common.alert")
+end
+
   protected
 
   def configure_permitted_parameters
