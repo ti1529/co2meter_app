@@ -1,4 +1,4 @@
-class ChatGptService
+class ChatgptService
   require "openai"
 
   def initialize

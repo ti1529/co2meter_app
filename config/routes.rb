@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post "branches/inquire", to: "branches#inquire", as: :inquire_branches
   get "search", to: "dashboards#index"
   get "dashboards/index"
   resources :co2_emission_factors, only: [ :index, :new, :create, :edit, :update, :destroy ]

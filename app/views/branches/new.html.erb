@@ -4,3 +4,32 @@
 
 <%= render "form", branch: @branch %>
 
+
+<div>
+
+  <p>都市区分が不明な場合はこちら</p>
+  <p>都道府県・市町村を入力し、「ChatGPTに尋ねる」をクリックすると、<br>都市区分を回答します。</p>
+  <%= form_with(url: inquire_branches_path, method: :post, local: true) do |f| %>
+    <div>
+      <%= f.label :ask_prefecture, "都道府県" %>
+      <%= f.text_field :ask_prefecture %>
+    </div>
+
+    <div>
+      <%= f.label :ask_city, "市町村" %>
+      <%= f.text_field :ask_city %>
+    </div>
+
+    <div>
+      <%= f.submit "ChatGPTに尋ねる" %>
+    </div>
+  <% end %>
+
+  <% if @chat_response.present? %>
+    <div>
+      <p>回答</p>
+      <p><%= simple_format(@chat_response) %></p>
+      <p>※この情報はChatGPTによる回答です。<br>内容に誤りが含まれる可能性がありますので、参考情報としてご利用ください。</p>
+    </div>
+  <% end %>
+</div>

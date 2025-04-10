@@ -58,6 +58,21 @@ class BranchesController < ApplicationController
     end
   end
 
+  def inquire
+    @branch = Branch.new
+
+    prefecture = params[:ask_prefecture]
+    city = params[:ask_city]
+
+    if prefecture.present? && city.present?
+      @chat_response = ChatgptService.new.get_city_category(prefecture, city)
+      render :new
+    else
+      flash.now[:notice] = "都道府県、市町村を入力してください。"
+      render :new
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_branch

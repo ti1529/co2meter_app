@@ -22,8 +22,8 @@ ja:
         postcode: 郵便番号
         prefecture: 都道府県
         city: 市町村
-        address_line1: 番地以降
-        address_line2: 建物名
+        address_line1: （任意）番地以降
+        address_line2: （任意）建物名
       branch_fiscal_year_stat:
         fiscal_year: 年度
         branch: 支店名
