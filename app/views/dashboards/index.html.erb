@@ -1,9 +1,13 @@
-
-
+    <div>
+        <p><%= "#{1.year.ago.year}" %>年度の実績が未入力の支店一覧</p>
+        <ul>
+            <% @branches_without_current_year_stat.each do |branch| %>
+                <li><%= branch.name %></li>
+            <% end %>
+        </ul>
+    </div>
 
 <%= search_form_for @q, url: search_path, method: :get, html: { data: { turbo: false }} do |f| %>
-
-
     <div>
         <%= f.label "期間" %>
         <%= f.select :fiscal_year_gteq, @fiscal_years, selected: params.dig(:q, :fiscal_year_gteq) || @fiscal_years.min  %>
