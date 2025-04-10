@@ -22,4 +22,8 @@ class Branch < ApplicationRecord
     small_city_b: 3,
     rural: 4
   }
+
+  def get_city_category(prompt)
+    OpenAi.get_city_category(prompt)
+  end
 end
