@@ -16,4 +16,12 @@ class Co2EmissionFactor < ApplicationRecord
     small_city_b: 3,
     rural: 4
   }
+
+  def self.ransackable_attributes(auth_object = nil)
+    [ "fiscal_year", "workplace_type", "city_category" ]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    []
+  end
 end

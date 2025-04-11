@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }
 
-  root "dashboards#index" 
+  root "dashboards#index"
 
   resources :companies
   resources :users, only: [ :index, :show ]

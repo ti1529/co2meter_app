@@ -5,12 +5,16 @@ class BranchFiscalYearStatsController < ApplicationController
   # GET /branch_fiscal_year_stats or /branch_fiscal_year_stats.json
   def index
     @q = BranchFiscalYearStat.ransack(params[:q])
-    @q.sorts = [ "fiscal_year asc", "branch_id asc" ] if @q.sorts.empty?
+    @q.sorts = [ "fiscal_year desc", "branch_id asc" ] if @q.sorts.empty?
     @branch_fiscal_year_stats = @q.result(distinct: true)
                                   .joins(:branch)
-                                  .includes(:branch)
+                                  .includes(:branch, :updater)
                                   .where(branches: { company_id: current_user.company.id })
 
+    @fiscal_years = BranchFiscalYearStat.joins(:branch)
+                                        .where(branches: { company_id: current_user.company.id })
+                                        .distinct.pluck(:fiscal_year)
+    @branches = current_user.company.branches
   end
 
   # GET /branch_fiscal_year_stats/new
@@ -77,6 +81,5 @@ class BranchFiscalYearStatsController < ApplicationController
     def correct_company
       @company = BranchFiscalYearStat.find(params[:id]).branch.company
       redirect_to root_path, notice: t("common.alert") unless current_user_company?(@company)
-
     end
 end

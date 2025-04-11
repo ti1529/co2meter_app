@@ -4,7 +4,14 @@ class Co2EmissionFactorsController < ApplicationController
 
   # GET /co2_emission_factors or /co2_emission_factors.json
   def index
-    @co2_emission_factors = Co2EmissionFactor.all
+    # @co2_emission_factors = Co2EmissionFactor.all
+    @q = Co2EmissionFactor.ransack(params[:q])
+    @q.sorts = [ "fiscal_year desc", "workplace_type asc", "city_category asc" ] if @q.sorts.empty?
+    @co2_emission_factors = @q.result(distinct: true)
+
+    @fiscal_years = Co2EmissionFactor.group(:fiscal_year)
+                                      .order(fiscal_year: :asc)
+                                      .pluck(:fiscal_year)
   end
 
   # GET /co2_emission_factors/new
