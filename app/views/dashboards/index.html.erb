@@ -7,7 +7,7 @@
         </ul>
     </div>
 
-<%= search_form_for @q, url: search_path, method: :get, html: { data: { turbo: false }} do |f| %>
+<%= search_form_for @q, url: search_path, method: :get do |f| %>
     <div>
         <%= f.label "期間" %>
         <%= f.select :fiscal_year_gteq, @fiscal_years, selected: params.dig(:q, :fiscal_year_gteq) || @fiscal_years.min  %>
