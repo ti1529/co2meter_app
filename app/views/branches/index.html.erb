@@ -3,13 +3,15 @@
 
 <h1><%= t(".title") %></h1>
 
+<%= link_to t("branches.link.new"), new_branch_path %>
+
 <table>
   <thead>
     <tr>
       <th><%= Branch.human_attribute_name(:name) %></th>
       <th><%= t("common.address") %></th>
 
-      <th ></th>
+      <th colspan="3" ></th>
     </tr>
   </thead>
 
@@ -21,10 +23,8 @@
 
         <td><%= link_to t("common.show"), branch %></td>
         <td><%= link_to t("common.edit"), edit_branch_path(branch) %></td>
-        <td><%= link_to t("branch_fiscal_year_stats.link.index"), branch_fiscal_year_stats_path %></td>
+        <td><%= link_to t("branch_fiscal_year_stats.link.index"), branch_fiscal_year_stats_path(q: { branch_id_eq: branch.id}) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t("branches.link.new"), new_branch_path %>

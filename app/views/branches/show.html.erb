@@ -3,8 +3,6 @@
 <%= render @branch %>
 
 <div>
-  <%= link_to t("common.edit"), edit_branch_path(@branch) %> |
-  <%= link_to "Back to branches", branches_path %>
-
-  <%= button_to t("common.delete"), @branch, method: :delete, data: { turbo_confirm: t("confirmations.delete.branch", branch_name: @branch.name)} %>
+  <%= link_to t("common.edit"), edit_branch_path(@branch) %> 
+  <%= button_to t("common.delete"), @branch, method: :delete, data: { confirm: t("confirmations.delete.branch", branch_name: @branch.name)} %>
 </div>
