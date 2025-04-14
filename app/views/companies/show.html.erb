@@ -4,8 +4,6 @@
 <%= render @company %>
 
 <div>
-  <%= link_to t("common.edit"), edit_company_path(@company) %> |
-  <%= link_to "Back to companies", companies_path %>
-
-  <%= button_to t("common.delete"), @company, method: :delete, data: { turbo_confirm: t("confirmations.delete.company", company_name: @company.name)} %>
+  <%= link_to t("common.edit"), edit_company_path(@company) %> 
+  <%= button_to t("common.delete"), @company, method: :delete, data: { confirm: t("confirmations.delete.company", company_name: @company.name)} %>
 </div>

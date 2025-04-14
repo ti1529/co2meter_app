@@ -26,6 +26,10 @@
 
   <body>
     <nav>
+
+      <div>
+        <%= link_to t(".title"), root_path %>
+      </div>
       <ul>
 
         <% if current_user&.admin? %>
@@ -45,8 +49,6 @@
           <li><%= link_to t("common.sign_out"), destroy_user_session_path, method: :delete, id: "sign-out" %></li>
         <% end %>
 
-
-
       </ul>
       <% if user_signed_in? %>
         <p><%= current_user.company.name %> 様</p>
@@ -55,6 +57,9 @@
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+
     <%= yield %>
+
+    
   </body>
 </html>
