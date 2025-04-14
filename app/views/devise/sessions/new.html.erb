@@ -1,5 +1,11 @@
 <h2><%= t('.sign_in') %></h2>
 
+<p>
+  本アプリは、複数の拠点を持つ企業様に向けて、<br>
+  <strong>従業員の通勤によるCO2排出量</strong>の<br>
+  簡易な算定・集計をサポートいたします。
+</p>
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />

@@ -51,7 +51,7 @@
 
       </ul>
       <% if user_signed_in? %>
-        <p><%= current_user.company.name %> 様</p>
+        <p><%= current_user.company.name %> ー <%= current_user.name %> 様（ログイン中）</p>
       <% end %>
     </nav>
 
@@ -64,11 +64,7 @@
 			<div class="container-fluid px-4">
 				<div class="d-flex align-items-center justify-content-between small">
 					<div class="text-muted">Copyright &copy; Your Website 2023</div>
-					<div>
-						<a href="#">Privacy Policy</a>
-						&middot;
-						<a href="#">Terms &amp; Conditions</a>
-					</div>
+
 				</div>
 			</div>
 		</footer>
