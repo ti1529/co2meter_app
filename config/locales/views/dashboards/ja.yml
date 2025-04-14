@@ -6,6 +6,8 @@ ja:
       title: ダッシュボード
       bar_chart:
         title: CO2排出量の年度推移
+      search_form:
+        title: 表示条件
       data_table:
         title: 支店ごとのCO2排出量
         fiscal_year: 年度

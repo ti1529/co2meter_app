@@ -1,115 +1,134 @@
-    <div>
-        <p><%= "#{1.year.ago.year}" %>年度の実績が未入力の支店一覧</p>
-        <ul>
-            <% @branches_without_current_year_stat.each do |branch| %>
-                <li><%= branch.name %></li>
-            <% end %>
-        </ul>
-    </div>
 
-<%= search_form_for @q, url: search_path, method: :get do |f| %>
-    <div>
-        <%= f.label "期間" %>
-        <%= f.select :fiscal_year_gteq, @fiscal_years, selected: params.dig(:q, :fiscal_year_gteq) || @fiscal_years.min  %>
-        <span> 〜 </span>
-        <%= f.select :fiscal_year_lteq, @fiscal_years, selected: params.dig(:q, :fiscal_year_lteq) || @fiscal_years.max  %>
-        
-    </div>
 
-    <div>
-        <%= f.label :branch_id_eq, "支店名" %>
-        <%= f.collection_select :branch_id_eq, @branches, :id, :name, include_blank: "指定なし"  %>
-    </div>
+<div class="container-fluid px-4">
+	<h1 class="mt-4"><%= t(".title") %></h1>
+	
+	<% if @branches_without_current_year_stat.present? %>
+		<div class="row">
+			<div class="mb-4">
+			<div class="accordion" id="accordion-nodata-branches">
+				<div class="accordion-item">
+					<strong class="accordion-header">
+							一部の支店で「<%= "#{1.year.ago.year}" %>年度」の実績がまだ入力されていません。
+						<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							（一覧を確認するには、こちらをクリックしてください）
+						</button>
+					</strong>
+					<div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordion-nodata-branches">
+						<div class="accordion-body">
+							<ul>
+								<% @branches_without_current_year_stat.each do |branch| %>
+									<li><%= branch.name %> ⋯ <%= link_to "実績登録" , new_branch_fiscal_year_stat_path(branch_id: branch.id) %></li>
+								<% end %>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+	<% end %>
 
-    <%= f.submit %>
-<% end %>
+	<div class="row">
+		<div class="col-xl-8">
+			<div class="card mb-4">
+				<div class="card-header">
+					<i class="fas fa-chart-bar me-1"></i>
+					<%= t(".bar_chart.title") %>
+				</div>
+				<div class="card-body">
+					<canvas id="Co2ChartBar"
+						data-labels= "<%= @selection_fiscal_years.to_json %>"
+						data-values= "<%= @co2_emissions_by_year.to_json %>">
+					</canvas>
+				</div>
+			</div>
+		</div>
 
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid px-4">
-                        <h1 class="mt-4"><%= t(".title") %></h1>
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                        <%= t(".bar_chart.title") %>
-                                    </div>
-                                    <div class="card-body">
-                                        <canvas id="Co2ChartBar"
-                                        data-labels= "<%= @selection_fiscal_years.to_json %>"
-                                        data-values= "<%= @co2_emissions_by_year.to_json %>">
-                                        </canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                <%= t(".data_table.title") %>
-                            </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th><%= t(".data_table.fiscal_year") %></th>
-                                            <th><%= t(".data_table.branch_name") %></th>
-                                            <th><%= t(".data_table.co2_emission") %></th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th><%= t(".data_table.fiscal_year") %></th>
-                                            <th><%= t(".data_table.branch_name") %></th>
-                                            <th><%= t(".data_table.co2_emission") %></th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
+		<div class="col-xl-4">
+			<div class="card mb-4">
+				<div class="card-header">
+					<i class="fas me-1"></i>
+					<%= t(".search_form.title") %>
+				</div>
+				<div class="card-body">
 
-                                        <% @selection_branches.each do |branch| %>
-                                            <% @selection_fiscal_years.each do |year| %>
-                                                <% stat = branch.branch_fiscal_year_stats.find_by(fiscal_year: year) %>
-                                                <tr>
-                                                    <% if stat.present? %>
+					<%= search_form_for @q, url: search_path, method: :get do |f| %>
+						<div>
+							<%= f.label "期間" %>
+							<%= f.select :fiscal_year_gteq, @fiscal_years, selected: params.dig(:q, :fiscal_year_gteq) || @fiscal_years.min  %>
+							<span> 〜 </span>
+							<%= f.select :fiscal_year_lteq, @fiscal_years, selected: params.dig(:q, :fiscal_year_lteq) || @fiscal_years.max  %>
+							
+						</div>
 
-                                                        <td><%= stat.fiscal_year %></td>
-                                                        <td><%= stat.branch.name %></td>
-                                                        <td><%= stat.calculated_co2_emission.round(2) %></td>
-                                                        <td><%= link_to "実績修正" , edit_branch_fiscal_year_stat_path(stat) %></td>
+						<div>
+							<%= f.label :branch_id_eq, "支店名" %>
+							<%= f.collection_select :branch_id_eq, @branches, :id, :name, include_blank: "すべての支店"  %>
+						</div>
 
-                                                    <% else %>
-                                                        <td><%= year %></td>
-                                                        <td><%= branch.name %></td>
-                                                        <td><%= %>データなし</td>
-                                                        <td><%= link_to "実績登録" , new_branch_fiscal_year_stat_path(fiscal_year: year, branch_id: branch.id) %></td>
+						<%= f.submit %>
+					<% end %>
+				</div>
+			</div>
 
-                                                    <% end %>
-                                                </tr>
-                                            <% end %>
-                                        <% end %>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+		</div>
+
+
+	</div>
+	<div class="card mb-4">
+		<div class="card-header">
+			<i class="fas fa-table me-1"></i>
+			<%= t(".data_table.title") %>
+		</div>
+		<div class="card-body">
+			<table id="datatablesSimple">
+				<thead>
+					<tr>
+						<th><%= t(".data_table.fiscal_year") %></th>
+						<th><%= t(".data_table.branch_name") %></th>
+						<th><%= t(".data_table.co2_emission") %></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<th><%= t(".data_table.fiscal_year") %></th>
+						<th><%= t(".data_table.branch_name") %></th>
+						<th><%= t(".data_table.co2_emission") %></th>
+						<th></th>
+					</tr>
+				</tfoot>
+				<tbody>
+
+					<% @selection_branches.each do |branch| %>
+						<% @selection_fiscal_years.each do |year| %>
+							<% stat = branch.branch_fiscal_year_stats.find_by(fiscal_year: year) %>
+							<tr>
+								<% if stat.present? %>
+
+									<td><%= stat.fiscal_year %></td>
+									<td><%= stat.branch.name %></td>
+									<td><%= stat.calculated_co2_emission.round(2) %></td>
+									<td><%= link_to "実績修正" , edit_branch_fiscal_year_stat_path(stat) %></td>
+
+								<% else %>
+									<td><%= year %></td>
+									<td><%= branch.name %></td>
+									<td>データなし</td>
+									<td><%= link_to "実績登録" , new_branch_fiscal_year_stat_path(fiscal_year: year, branch_id: branch.id) %></td>
+
+								<% end %>
+							</tr>
+						<% end %>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>

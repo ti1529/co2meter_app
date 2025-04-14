@@ -8,12 +8,12 @@ window.addEventListener('DOMContentLoaded', event => {
     let options = {
       labels: {
         perPage: "件表示",
-        info: "{rows}件中、{start} 〜 {end}を表示",
+        info: "{rows}件中、{start} 〜 {end}件を表示",
         noResults: "該当するデータはありません"
 
       },
       columns: [
-        { select: 0, sort: "asc"},
+        { select: 0, sort: "desc"},
         { select: 2, filter: ["データなし"]}
       ],
       searchable: false,
