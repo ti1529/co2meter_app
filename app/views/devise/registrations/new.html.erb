@@ -6,16 +6,19 @@
   <%= f.hidden_field :company_id, value: current_user.company_id %>
 
   <div class="field">
+    <span class="required-mark">※</span>
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
   </div>
 
   <div class="field">
+    <span class="required-mark">※</span>
     <%= f.label :email %><br />
     <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
   <div class="field">
+    <span class="required-mark">※</span>
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
@@ -24,6 +27,7 @@
   </div>
 
   <div class="field">
+    <span class="required-mark">※</span>
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
@@ -36,3 +40,8 @@
 <% unless user_signed_in? %>
   <%= render "devise/shared/links" %>
 <% end %>
+
+<p>
+  <span class="required-mark">※</span>
+  がある項目は入力必須です
+</p>

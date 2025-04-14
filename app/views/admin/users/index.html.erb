@@ -1,5 +1,7 @@
 <h1><%= t ".title" %></h1>
 
+<%= link_to t("admin.users.link.new"), new_admin_user_path %>
+
 <table>
   <thead>
     <tr>
@@ -7,7 +9,8 @@
       <th><%= User.human_attribute_name(:name) %></th>
       <th><%= User.human_attribute_name(:email) %></th>
       <th><%= User.human_attribute_name(:admin) %></th>
-      <td><td>
+      
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -29,5 +32,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t("admin.users.link.new"), new_admin_user_path %>
