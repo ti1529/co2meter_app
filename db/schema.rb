@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_04_02_030202) do
+ActiveRecord::Schema[7.2].define(version: 2025_04_15_054712) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_02_030202) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["branch_id"], name: "index_branch_fiscal_year_stats_on_branch_id"
+    t.index ["fiscal_year", "branch_id"], name: "index_branch_fiscal_year_stats_on_fiscal_year_and_branch_id", unique: true
     t.index ["user_id"], name: "index_branch_fiscal_year_stats_on_user_id"
   end
 
@@ -49,6 +50,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_02_030202) do
     t.string "co2_emission_factor_unit", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["fiscal_year", "workplace_type", "city_category"], name: "idx_on_fiscal_year_workplace_type_city_category_9fdbed3fe5", unique: true
   end
 
   create_table "companies", force: :cascade do |t|
