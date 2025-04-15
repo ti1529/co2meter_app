@@ -1,11 +1,6 @@
 <% if resource.errors.any? %>
   <div id="error_explanation" data-turbo-cache="false">
-    <h2>
-      <%= I18n.t("errors.messages.not_saved",
-                 count: resource.errors.count,
-                 resource: devise_i18n_fix_model_name_case(resource.model_name.human, i18n_key: 'errors.messages.not_saved'))
-       %>
-    </h2>
+    <h2><%= resource.errors.count %>件のエラーが発生しました </h2>
     <ul>
       <% resource.errors.full_messages.each do |message| %>
         <li><%= message %></li>

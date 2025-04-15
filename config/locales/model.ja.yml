@@ -38,8 +38,6 @@ ja:
         co2_emission_factor_unit: CO2排出係数（単位）
 
     errors:
-      template:
-        body: 次の項目を確認してください
       models:
         company:
           attributes:

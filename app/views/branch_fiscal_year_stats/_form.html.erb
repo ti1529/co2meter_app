@@ -1,7 +1,7 @@
 <%= form_with(model: branch_fiscal_year_stat) do |form| %>
   <% if branch_fiscal_year_stat.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(branch_fiscal_year_stat.errors.count, "error") %> prohibited this branch_fiscal_year_stat from being saved:</h2>
+    <div id="error_explanation">
+      <h2><%= branch_fiscal_year_stat.errors.count %>件のエラーが発生しました </h2>
 
       <ul>
         <% branch_fiscal_year_stat.errors.each do |error| %>
