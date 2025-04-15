@@ -5,12 +5,12 @@ ja:
         new: 新しいユーザを登録
         index: ユーザ一覧（管理者用）
       index:
-        title: ユーザ一覧
+        title: ユーザ一覧（管理者用）
       new:
-        title: ユーザ登録画面（管理者用）
+        title: ユーザ登録（管理者用）
         sign_up: 登録する
       edit:
-        title: ユーザ編集画面（管理者用）
+        title: ユーザ編集（管理者用）
         update: 更新する
 
       create:

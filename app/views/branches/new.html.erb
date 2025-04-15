@@ -2,34 +2,48 @@
 
 <h1><%= t(".title") %></h1>
 
-<%= render "form", branch: @branch %>
+<div class="accordion" id="accordion-chatgpt">
+  <div class="accordion-item">
+    <h3 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        都市区分が不明な場合はこちらをクリック
+      </button>
+    </h3>
 
+    <% if @chat_response.present? %>
+      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+    <% else %>
+      <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+    <% end %>
 
-<div>
+      <div class="accordion-body">
+        <p>都道府県・市町村を入力し、「ChatGPTに尋ねる」をクリックすると、<br>都市区分を回答します。</p>
+        <%= form_with(url: inquire_branches_path, method: :post, local: true) do |f| %>
+          <div>
+            <%= f.label :ask_prefecture, "都道府県" %>
+            <%= f.text_field :ask_prefecture %>
+          </div>
+          <div>
+            <%= f.label :ask_city, "市町村" %>
+            <%= f.text_field :ask_city %>
+          </div>
 
-  <p>都市区分が不明な場合はこちら</p>
-  <p>都道府県・市町村を入力し、「ChatGPTに尋ねる」をクリックすると、<br>都市区分を回答します。</p>
-  <%= form_with(url: inquire_branches_path, method: :post, local: true) do |f| %>
-    <div>
-      <%= f.label :ask_prefecture, "都道府県" %>
-      <%= f.text_field :ask_prefecture %>
+          <div>
+            <%= f.submit "ChatGPTに尋ねる" %>
+          </div>
+        <% end %>        
+      </div>
     </div>
-
-    <div>
-      <%= f.label :ask_city, "市町村" %>
-      <%= f.text_field :ask_city %>
-    </div>
-
-    <div>
-      <%= f.submit "ChatGPTに尋ねる" %>
-    </div>
-  <% end %>
-
-  <% if @chat_response.present? %>
-    <div>
-      <p>回答</p>
-      <p><%= simple_format(@chat_response) %></p>
-      <p>※この情報はChatGPTによる回答です。<br>内容に誤りが含まれる可能性がありますので、参考情報としてご利用ください。</p>
-    </div>
-  <% end %>
+  </div>
 </div>
+
+<% if @chat_response.present? %>
+  <div>
+    <p>ChatGPTによる回答</p>
+    <p><%= simple_format(@chat_response) %></p>
+    <p>※この情報はChatGPTによる回答です。<br>内容に誤りが含まれる可能性がありますので、参考情報としてご利用ください。</p>
+  </div>
+<% end %>
+
+
+<%= render "form", branch: @branch %>

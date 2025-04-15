@@ -12,11 +12,13 @@
   <% end %>
 
   <div>
+    <span class="required-mark">※</span>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
 
   <div>
+    <span class="required-mark">※</span>
     <%= form.label :contact_name, style: "display: block" %>
     <%= form.text_field :contact_name %>
   </div>
@@ -27,6 +29,7 @@
   </div>
 
   <div>
+    <span class="required-mark">※</span>
     <%= form.label :status, style: "display: block" %>
     <%= form.select :status,
       Company.statuses.keys.map { |key| [Company.statuses_i18n[key],key]}
@@ -37,3 +40,8 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<p>
+<span class="required-mark">※</span>
+がある項目は入力必須です
+</p>

@@ -38,6 +38,7 @@ class BranchFiscalYearStatsController < ApplicationController
         format.html { redirect_to branch_fiscal_year_stats_path, notice: t(".notice") }
         format.json { render :index, status: :created, location: @branch_fiscal_year_stat }
       else
+        @branches = current_user.company.branches
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @branch_fiscal_year_stat.errors, status: :unprocessable_entity }
       end
@@ -51,6 +52,7 @@ class BranchFiscalYearStatsController < ApplicationController
         format.html { redirect_to branch_fiscal_year_stats_path, notice: t(".notice") }
         format.json { render :index, status: :ok, location: @branch_fiscal_year_stat }
       else
+        @branches = current_user.company.branches
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @branch_fiscal_year_stat.errors, status: :unprocessable_entity }
       end

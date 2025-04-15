@@ -12,11 +12,13 @@
   <% end %>
 
   <div>
+    <span class="required-mark">※</span>
     <%= form.label :fiscal_year, style: "display: block" %>
-    <%= form.select :fiscal_year, (2000..2100).map(&:to_s), selected: form.object.fiscal_year.presence || Time.current.year.to_s %>
+    <%= form.select :fiscal_year, (2000..2100).map(&:to_s), selected: form.object.fiscal_year.presence || 1.year.ago.year.to_s %>
   </div>
 
   <div>
+    <span class="required-mark">※</span>
     <%= form.label :branch_id, BranchFiscalYearStat.human_attribute_name(:branch), style: "display: block" %>
     <%= form.select :branch_id,
       branches.map { |branch| [ branch.name, branch.id] } , selected: form.object.branch_id
@@ -24,11 +26,13 @@
   </div>
 
   <div>
+    <span class="required-mark">※</span>
     <%= form.label :annual_working_days, style: "display: block" %>
     <%= form.number_field :annual_working_days, in: 0..365 %>
   </div>
 
   <div>
+    <span class="required-mark">※</span>
     <%= form.label :annual_employee_count, style: "display: block" %>
     <%= form.number_field :annual_employee_count, min: 0 %>
   </div>
@@ -37,3 +41,8 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<p>
+	<span class="required-mark">※</span>
+	がある項目は入力必須です
+</p>

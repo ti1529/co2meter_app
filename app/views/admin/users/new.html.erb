@@ -12,23 +12,26 @@
     </div>
   <% end %>
 
-
   <div class="field">
+    <span class="required-mark">※</span>
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
   </div>
 
   <div class="field">
+    <span class="required-mark">※</span>
     <%= f.label :company_id, "所属企業名" %><br />
     <%= f.collection_select :company_id, @companies, :id, :name, include_blank: "指定なし" %>
   </div>
 
   <div class="field">
+    <span class="required-mark">※</span>
     <%= f.label :email %><br />
     <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
   <div class="field">
+    <span class="required-mark">※</span>
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
@@ -37,11 +40,13 @@
   </div>
 
   <div class="field">
+    <span class="required-mark">※</span>
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
+    <span class="required-mark">※</span>
     <%= f.label :admin %><br />
     <%= f.check_box :admin, { autocomplete: "admin" }, "true", "false" %>
   </div>
@@ -50,3 +55,8 @@
     <%= f.submit t('.sign_up') %>
   </div>
 <% end %>
+
+<p>
+  <span class="required-mark">※</span>
+  がある項目は入力必須です
+</p>

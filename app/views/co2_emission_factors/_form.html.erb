@@ -12,12 +12,13 @@
   <% end %>
 
   <div>
+    <span class="required-mark">※</span>
     <%= form.label :fiscal_year, style: "display: block" %>
-    <%= form.select :fiscal_year, (2000..2100).map(&:to_s), selected: Time.current.year.to_s %>
-
+    <%= form.select :fiscal_year, (2000..2100).map(&:to_s), selected: co2_emission_factor.fiscal_year || Time.current.year.to_s %>
   </div>
 
   <div>
+    <span class="required-mark">※</span>
     <%= form.label :workplace_type, style: "display: block" %>
     <%= form.select :workplace_type,
       Branch.workplace_types.keys.map { |key| [Branch.workplace_types_i18n[key], key] },
@@ -26,6 +27,7 @@
   </div>
 
   <div>
+    <span class="required-mark">※</span>
     <%= form.label :city_category, style: "display: block" %>
     <%= form.select :city_category,
       Branch.city_categories.keys.map { |key| [Branch.city_categories_i18n[key], key]},
@@ -35,11 +37,13 @@
   </div>
 
   <div>
+    <span class="required-mark">※</span>
     <%= form.label :co2_emission_factor, style: "display: block" %>
     <%= form.number_field :co2_emission_factor, min: 0, step: 0.001 %>
   </div>
 
   <div>
+    <span class="required-mark">※</span>
     <%= form.label :co2_emission_factor_unit, style: "display: block" %>
     <%= form.select :co2_emission_factor_unit,["kgCO2/人・日"] %>
   </div>
@@ -48,3 +52,8 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<p>
+	<span class="required-mark">※</span>
+	がある項目は入力必須です
+</p>

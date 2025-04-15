@@ -50,6 +50,10 @@ ja:
             postcode:
               invalid: は半角数字7桁で入力してください
 
+  layouts:
+    application:
+      title: CO2meter
+      
   attributes:
     created_at: 作成日
     updated_at: 更新日

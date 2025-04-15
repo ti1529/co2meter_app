@@ -12,11 +12,13 @@
   <% end %>
 
   <div>
+    <span class="required-mark">※</span>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
 
   <div>
+    <span class="required-mark">※</span>
     <%= form.label :workplace_type, style: "display: block" %>
     <%= form.select :workplace_type,
       Branch.workplace_types.keys.map { |key| [Branch.workplace_types_i18n[key], key] },
@@ -25,6 +27,7 @@
   </div>
 
   <div>
+    <span class="required-mark">※</span>
     <%= form.label :city_category, style: "display: block" %>
     <%= form.select :city_category,
       Branch.city_categories.keys.map { |key| [Branch.city_categories_i18n[key], key]},
@@ -38,12 +41,9 @@
   </div>
 
   <div>
-    <%= form.label :prefecture, style: "display: block" %>
+    <span class="required-mark">※</span>
+    <%= form.label t("common.address"), style: "display: block" %>
     <%= form.text_field :prefecture, placeholder: "都道府県" %>
-  </div>
-
-  <div>
-    <%= form.label :city, style: "display: block" %>
     <%= form.text_field :city, placeholder: "市町村" %>
   </div>
 
@@ -61,3 +61,8 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<p>
+	<span class="required-mark">※</span>
+	がある項目は入力必須です
+</p>

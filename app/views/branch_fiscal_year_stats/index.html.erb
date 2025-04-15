@@ -3,6 +3,8 @@
 
 <h1><%= t(".title") %></h1>
 
+<%= link_to t("branch_fiscal_year_stats.link.new"), new_branch_fiscal_year_stat_path %>
+
 <div>
   <%= search_form_for @q do |f|  %>
     <div>
@@ -18,7 +20,7 @@
     </div>
 
     <div>
-      <%= f.submit "検索" %>
+      <%= f.submit %>
     </div>
   <% end %>
 </div>
@@ -34,7 +36,7 @@
       <th><%= BranchFiscalYearStat.human_attribute_name(:annual_employee_count) %></th>
       <th><%= BranchFiscalYearStat.human_attribute_name(:updater) %></th>
 
-      <th ></th>
+      <th colspan="2" ></th>
     </tr>
   </thead>
 
@@ -55,6 +57,3 @@
     <% end %>
   </tbody>
 </table>
-
-
-<%= link_to t("branch_fiscal_year_stats.link.new"), new_branch_fiscal_year_stat_path %>
