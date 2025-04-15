@@ -1,7 +1,7 @@
 <%= form_with(model: co2_emission_factor) do |form| %>
   <% if co2_emission_factor.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(co2_emission_factor.errors.count, "error") %> prohibited this co2_emission_factor from being saved:</h2>
+    <div id="error_explanation">
+      <h2><%= co2_emission_factor.errors.count %>件のエラーが発生しました </h2>
 
       <ul>
         <% co2_emission_factor.errors.each do |error| %>
