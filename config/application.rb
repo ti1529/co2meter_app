@@ -40,5 +40,6 @@ module Co2meter
     config.i18n.load_path += Dir[Rails.root.join("config/locales/**/*.{rb,yml}")]
 
     config.time_zone = "Asia/Tokyo"
+    config.active_model.i18n_customize_full_message = true
   end
 end

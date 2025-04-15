@@ -1,5 +1,5 @@
 class Co2EmissionFactor < ApplicationRecord
-  validates :fiscal_year, presence: true, length: { is: 4 }
+  validates :fiscal_year, presence: true, length: { is: 4 }, uniqueness: { scope: [ :workplace_type, :city_category ] }
   validates :workplace_type, presence: true
   validates :city_category, presence: true
   validates :co2_emission_factor, presence: true, numericality: { greater_than_or_equal_to: 0 }

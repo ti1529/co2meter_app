@@ -47,6 +47,16 @@ ja:
           attributes:
             postcode:
               invalid: は半角数字7桁で入力してください
+        co2_emission_factor:
+          attributes:
+            fiscal_year:
+              format: "%{message}"
+              taken: この年度はすでに排出係数が登録されています。勤務形態と都市区分が同じ組み合わせは、1年度につき1つだけ登録できます
+        branch_fiscal_year_stat:
+          attributes:
+            fiscal_year:
+              format: "%{message}"
+              taken: この支店ではすでに同じ年度のデータが登録されています。同じ支店では、1年度に1つだけ登録できます
 
   layouts:
     application:
