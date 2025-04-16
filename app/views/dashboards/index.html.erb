@@ -55,7 +55,7 @@
 
 					<%= search_form_for @q, url: search_path, method: :get do |f| %>
 						<div>
-							<%= f.label "期間" %>
+							<%= f.label "期間（年度）" %>
 							<%= f.select :fiscal_year_gteq, @fiscal_years, selected: params.dig(:q, :fiscal_year_gteq) || @fiscal_years.min  %>
 							<span> 〜 </span>
 							<%= f.select :fiscal_year_lteq, @fiscal_years, selected: params.dig(:q, :fiscal_year_lteq) || @fiscal_years.max  %>

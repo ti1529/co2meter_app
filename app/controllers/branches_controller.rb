@@ -26,7 +26,7 @@ class BranchesController < ApplicationController
 
     respond_to do |format|
       if @branch.save
-        format.html { redirect_to @branch, notice: t(".notice") }
+        format.html { redirect_to branches_path, notice: t(".notice") }
         format.json { render :show, status: :created, location: @branch }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -87,6 +87,5 @@ class BranchesController < ApplicationController
     def correct_company
       @company = Branch.find(params[:id]).company
       redirect_to root_path, notice: t("common.alert") unless current_user_company?(@company)
-
     end
 end
