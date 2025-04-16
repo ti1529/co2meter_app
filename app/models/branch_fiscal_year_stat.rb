@@ -3,8 +3,8 @@ class BranchFiscalYearStat < ApplicationRecord
   belongs_to :updater, class_name: "User", foreign_key: "user_id"
 
   validates :fiscal_year, presence: true, length: { is: 4 }, uniqueness: { scope: :branch_id }
-  validates :annual_working_days, presence: true, numericality: { less_than_or_equal_to: 365 }
-  validates :annual_employee_count, presence: true
+  validates :annual_working_days, presence: true, numericality: { greater_than: 0, less_than_or_equal_to: 365 }
+  validates :annual_employee_count, presence: true, numericality: { greater_than: 0 }
 
   def self.ransackable_attributes(auth_object = nil)
     [ "fiscal_year", "branch_id" ]
