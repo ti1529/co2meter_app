@@ -87,6 +87,5 @@ class BranchesController < ApplicationController
     def correct_company
       @company = Branch.find(params[:id]).company
       redirect_to root_path, notice: t("common.alert") unless current_user_company?(@company)
-
     end
 end
