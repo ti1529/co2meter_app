@@ -9,8 +9,6 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, alert: t("common.alert")
   end
 
-<<<<<<< HEAD
-=======
   def after_sign_in_path_for(resource)
     if current_user.admin?
       companies_path
@@ -19,7 +17,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
->>>>>>> main
   def after_sign_out_path_for(resource_or_scope)
     new_user_session_path
   end

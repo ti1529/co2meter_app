@@ -5,5 +5,5 @@
 
 <div>
   <%= link_to t("common.edit"), edit_company_path(@company) %> 
-  <%= button_to t("common.delete"), @company, method: :delete, data: { confirm: t("confirmations.delete.company", company_name: @company.name)} %>
+  <%= button_to t("common.delete"), @company, method: :delete, data: { confirm: t("confirmations.delete.company", company_name: @company.name)}, id: "destroy-company" %>
 </div>
