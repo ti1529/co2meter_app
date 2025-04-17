@@ -3,7 +3,7 @@
 
 <h1><%= t(".title") %></h1>
 
-<%= link_to t("branch_fiscal_year_stats.link.new"), new_branch_fiscal_year_stat_path %>
+<%= link_to t("branch_fiscal_year_stats.link.new"), new_branch_fiscal_year_stat_path, id: "branch-fiscal-year-stats-new" %>
 
 <div>
   <%= search_form_for @q do |f|  %>
