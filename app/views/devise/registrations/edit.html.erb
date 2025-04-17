@@ -42,7 +42,7 @@
 
 
   <div class="actions">
-    <%= f.submit t('.update') %>
+    <%= f.submit t('.update'), id: "update-user" %>
   </div>
 <% end %>
 
@@ -54,7 +54,5 @@
 
 <div>
 
-  <%= button_to t('.cancel_my_account'), registration_path(resource_name), data: {
-       confirm: t('confirmations.delete.user'), turbo_confirm: t('confirmations.delete.user') 
-       }, method: :delete %>
+  <%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('confirmations.delete.user')}, method: :delete, id: "destroy-user" %>
 </div>

@@ -42,8 +42,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
+  def after_sign_up_path_for(resource)
+    if current_user.admin?
+      admin_users_path
+    else
+      users_path
+    end
+  end
+
+  def sign_up(resource_name, resource)
+    # sign_in(resource_name, resource)
+  end
+
   def after_update_path_for(resource)
-    user_path(id: current_user.id)  # ダッシュボードを作成するまでの仮置き
+    user_path(id: current_user.id)
   end
 
   # If you have extra params to permit, append them to the sanitizer.
