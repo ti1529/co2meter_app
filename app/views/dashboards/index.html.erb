@@ -6,25 +6,25 @@
 	<% if @branches_without_current_year_stat.present? %>
 		<div class="row">
 			<div class="mb-4">
-			<div class="accordion" id="accordion-nodata-branches">
-				<div class="accordion-item">
-					<strong class="accordion-header">
-							一部の支店で「<%= "#{1.year.ago.year}" %>年度」の実績がまだ入力されていません。
-						<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-							（一覧を確認するには、こちらをクリックしてください）
-						</button>
-					</strong>
-					<div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordion-nodata-branches">
-						<div class="accordion-body">
-							<ul>
-								<% @branches_without_current_year_stat.each do |branch| %>
-									<li><%= branch.name %> ⋯ <%= link_to "実績登録" , new_branch_fiscal_year_stat_path(branch_id: branch.id) %></li>
-								<% end %>
-							</ul>
+				<div class="accordion" id="accordion-nodata-branches">
+					<div class="accordion-item">
+						<strong class="accordion-header">
+								一部の支店で「<%= "#{1.year.ago.year}" %>年度」の実績がまだ入力されていません。
+							<button id="branches-without-current-year-stat" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+								（一覧を確認するには、こちらをクリックしてください）
+							</button>
+						</strong>
+						<div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordion-nodata-branches">
+							<div class="accordion-body">
+								<ul>
+									<% @branches_without_current_year_stat.each do |branch| %>
+										<li><%= branch.name %> ⋯ <%= link_to "実績登録" , new_branch_fiscal_year_stat_path(branch_id: branch.id) %></li>
+									<% end %>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 			</div>
 		</div>
 	<% end %>
@@ -55,7 +55,7 @@
 
 					<%= search_form_for @q, url: search_path, method: :get do |f| %>
 						<div>
-							<%= f.label "期間" %>
+							<%= f.label "期間（年度）" %>
 							<%= f.select :fiscal_year_gteq, @fiscal_years, selected: params.dig(:q, :fiscal_year_gteq) || @fiscal_years.min  %>
 							<span> 〜 </span>
 							<%= f.select :fiscal_year_lteq, @fiscal_years, selected: params.dig(:q, :fiscal_year_lteq) || @fiscal_years.max  %>

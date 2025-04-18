@@ -6,7 +6,7 @@ class Ability
   def initialize(user)
     if user.present?
       cannot :manage, Company
-      cannot :manege, :admin_user
+      cannot :manage, :admin_user
       can :read, Co2EmissionFactor
 
       if user.admin?

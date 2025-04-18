@@ -3,12 +3,12 @@
 
 <h1><%= t(".title") %></h1>
 
-<%= link_to t("co2_emission_factors.link.new"), new_co2_emission_factor_path if current_user.admin? %>
+<%= link_to t("co2_emission_factors.link.new"), new_co2_emission_factor_path, id: "co2-emission-factors-new" if current_user.admin? %>
 
 <div>
   <%= search_form_for @q do |f| %>
     <div>
-        <%= f.label "期間" %>
+        <%= f.label "期間（年度）" %>
         <%= f.select :fiscal_year_gteq, @fiscal_years, selected: params.dig(:q, :fiscal_year_gteq) || 1.year.ago.year.to_s || @fiscal_years.min  %>
         <span> 〜 </span>
         <%= f.select :fiscal_year_lteq, @fiscal_years, selected: params.dig(:q, :fiscal_year_lteq) || 1.year.ago.year.to_s || @fiscal_years.max  %>

@@ -53,28 +53,18 @@ RSpec.describe BranchFiscalYearStat, type: :model do
 
     context '年度と支店idの両方について、同じ値がすでに登録されている場合' do
       it 'バリデーションに失敗する' do
-        # 下記の１行で済ましたかったが、企業が重複しているとうエラー
-        # FactoryBot.create(:branch_fiscal_year_stat)
+        stat = FactoryBot.create(:branch_fiscal_year_stat)
 
-        # 下記の4行で作成したら、支店実績を作成できた
-        company = FactoryBot.create(:company)
-        branch = FactoryBot.create(:branch, company: company)
-        user = FactoryBot.create(:user, company: company)
-        FactoryBot.create(:branch_fiscal_year_stat, branch: branch, updater: user)
-
-        stat_new = FactoryBot.build(:branch_fiscal_year_stat, branch: branch, updater: user)
+        stat_new = FactoryBot.build(:branch_fiscal_year_stat, branch: stat.branch, updater: stat.updater)
         expect(stat_new).not_to be_valid
       end
     end
 
     context '年度と支店idのいずれかについて同じ値が登録されておらず、年間勤務日数、従業員数が正の値である場合' do
       it 'バリデーションに成功する' do
-        company = FactoryBot.create(:company)
-        branch = FactoryBot.create(:branch, company: company)
-        user = FactoryBot.create(:user, company: company)
-        FactoryBot.create(:branch_fiscal_year_stat, branch: branch, updater: user)
+        stat = FactoryBot.create(:branch_fiscal_year_stat)
 
-        stat_new = FactoryBot.build(:branch_fiscal_year_stat, fiscal_year: "2021", branch: branch, updater: user)
+        stat_new = FactoryBot.build(:branch_fiscal_year_stat, fiscal_year: "2021", branch: stat.branch, updater: stat.updater)
         expect(stat_new).to be_valid
       end
     end

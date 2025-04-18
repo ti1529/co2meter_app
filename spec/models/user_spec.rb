@@ -18,8 +18,8 @@ RSpec.describe User, type: :model do
 
     context 'ユーザのメールアドレスがすでに使用されていた場合' do
       it 'バリデーションに失敗する' do
-        FactoryBot.create(:user)
-        user_new = FactoryBot.build(:user, name: "user_new")
+        user = FactoryBot.create(:user)
+        user_new = FactoryBot.build(:user, name: "user_new", email: user.email)
         expect(user_new).not_to be_valid
       end
     end
