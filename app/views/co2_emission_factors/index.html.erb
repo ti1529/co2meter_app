@@ -3,7 +3,7 @@
 
 <h1><%= t(".title") %></h1>
 
-<%= link_to t("co2_emission_factors.link.new"), new_co2_emission_factor_path if current_user.admin? %>
+<%= link_to t("co2_emission_factors.link.new"), new_co2_emission_factor_path, id: "co2-emission-factors-new" if current_user.admin? %>
 
 <div>
   <%= search_form_for @q do |f| %>
