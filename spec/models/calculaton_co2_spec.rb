@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "CO2排出量の算定機能", type: :model do
-  # let!(:office_2020_co2_factors) { FactoryBot.create_list(:co2_emission_factor_office, 5, fiscal_year: "2020") }
-  # let!(:factory_2020_co2_factors) { FactoryBot.create_list(:co2_emission_factor_factory, 5, fiscal_year: "2020") }
-
   let!(:office_major_city_2020_factor) { FactoryBot.create(:co2_emission_factor, co2_emission_factor: 2) }
 
   let!(:branch_office_major_city) { FactoryBot.create(:branch) }
