@@ -147,4 +147,33 @@ RSpec.describe 'ユーザ管理機能', type: :system, selenium: true do
       end
     end
   end
+
+  describe '一般ユーザのアクセス制限' do
+    before do
+      login_as(user)
+    end
+    context '一般ユーザがユーザ一覧画面（管理者用）にアクセスした場合' do
+      it 'ダッシュボード画面に遷移し、「アクセス権限がありません」というメッセージが表示される' do
+        visit admin_users_path
+        expect(page).to have_content "アクセス権限がありません"
+        expect(page).to have_selector "h1", text: "ダッシュボード"
+      end
+    end
+
+    context '一般ユーザが企業一覧画面にアクセスした場合' do
+      it 'ダッシュボード画面に遷移し、「アクセス権限がありません」というメッセージが表示される' do
+        visit companies_path
+        expect(page).to have_content "アクセス権限がありません"
+        expect(page).to have_selector "h1", text: "ダッシュボード"
+      end
+    end
+
+    context '一般ユーザが排出係数登録画面にアクセスした場合' do
+      it 'ダッシュボード画面に遷移し、「アクセス権限がありません」というメッセージが表示される' do
+        visit new_co2_emission_factor_path
+        expect(page).to have_content "アクセス権限がありません"
+        expect(page).to have_selector "h1", text: "ダッシュボード"
+      end
+    end
+  end
 end
