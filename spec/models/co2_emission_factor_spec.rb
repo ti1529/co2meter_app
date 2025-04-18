@@ -18,8 +18,8 @@ RSpec.describe Co2EmissionFactor, type: :model do
 
     context '排出係数の年度、勤務形態、都市区分のすべてについて、同じものが既に登録されている場合' do
       it 'バリデーションに失敗する' do
-        FactoryBot.create(:co2_emission_factor)
-        factor_new = FactoryBot.build(:co2_emission_factor, co2_emission_factor: 3)
+        factor = FactoryBot.create(:co2_emission_factor)
+        factor_new = FactoryBot.build(:co2_emission_factor, workplace_type: factor.workplace_type, city_category: factor.city_category)
         expect(factor_new).not_to be_valid
       end
     end
