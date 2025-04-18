@@ -18,6 +18,7 @@ RSpec.describe "Dashboards", type: :system, selenium: true do
 
   before do
     login_as(user)
+    FactoryBot.rewind_sequences
   end
 
   describe '算定結果の表示機能' do
@@ -127,6 +128,20 @@ RSpec.describe "Dashboards", type: :system, selenium: true do
             expect(page).not_to have_selector "td", text: branch_1.name
             expect(page).not_to have_selector "td", text: "2024"
           end
+        end
+      end
+    end
+  end
+
+  describe '実績の入力忘れ防止機能' do
+    context '直近年度（例：2025年1月〜12月の場合、2024年度）の支店実績が未入力の支店があり、「一覧を確認するには、こちらをクリックしてください」というボタンをクリックした場合' do
+      it '該当する支店が表示される' do
+        BranchFiscalYearStat.find_by(branch_id: branch_2.id, fiscal_year: "2024").destroy
+        visit current_path
+        find("#branches-without-current-year-stat").click
+
+        within all(".accordion-body").first do
+          expect(page).to have_content branch_2.name
         end
       end
     end
