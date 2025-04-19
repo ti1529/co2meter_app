@@ -41,5 +41,6 @@ module Co2meter
 
     config.time_zone = "Asia/Tokyo"
     config.active_model.i18n_customize_full_message = true
+    config.exceptions_app = ->(env) { ErrorsController.action(:show).call(env) }
   end
 end
