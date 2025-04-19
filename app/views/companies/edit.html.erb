@@ -1,11 +1,9 @@
 <% content_for :title, "Editing company" %>
 
-<h1><%= t(".title") %></h1>
 
-<%= render "form", company: @company %>
-
-<br>
-
-<div>
-  <%= link_to t("common.back"), company_path(@company) %>
+<div class="row justify-content-center">
+  <div class="col-sm-8">
+    <h1><%= t(".title") %></h1>
+    <%= render "form", company: @company %>
+  </div>
 </div>
