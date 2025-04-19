@@ -25,40 +25,51 @@
   </head>
 
   <body>
-    <nav>
+    <header>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
 
-      <div>
-        <%= link_to t(".title"), root_path %>
-      </div>
-      <ul>
+        <div class="container-fluid">
+          <%= link_to t(".title"), root_path, class: "navbar-brand" %>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-        <% if current_user&.admin? %>
-          <li><%= link_to t("companies.link.index"), companies_path, id: "companies-index" %></li>
-          <li><%= link_to t("dashboards.link.index"), dashboards_index_path, id: "dashboards-index" %></li>
-          <li><%= link_to t("users.link.show"), user_path(current_user.id), id: "users-show" %></li>
-          <li><%= link_to t("admin.users.link.index"), admin_users_path, id: "admin-users-index" %></li>
-          <li><%= link_to t("co2_emission_factors.link.index"), co2_emission_factors_path( q: { fiscal_year_eq: 1.year.ago.year.to_s }), id: "co2-emission-factors-index" %></li>
-          <li><%= link_to t("common.sign_out"), destroy_user_session_path, method: :delete, id: "sign-out" %></li>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
 
-        <% elsif user_signed_in? %>
-          <li><%= link_to t("dashboards.link.index"), dashboards_index_path, id: "dashboards-index" %></li>
-          <li><%= link_to t("branches.link.index"), branches_path, id: "branches-index" %></li>
-          <li><%= link_to t("users.link.show"), user_path(current_user.id), id: "users-show" %></li>
-          <li><%= link_to t("users.link.index"), users_path, id: "users-index" %></li>
-          <li><%= link_to t("co2_emission_factors.link.index"), co2_emission_factors_path( q: { fiscal_year_eq: 1.year.ago.year.to_s }), id: "co2-emission-factors-index" %></li>
-          <li><%= link_to t("common.sign_out"), destroy_user_session_path, method: :delete, id: "sign-out" %></li>
-        <% end %>
+              <% if current_user&.admin? %>
+                <li class="nav-item"><%= link_to t("companies.link.index"), companies_path, id: "companies-index", class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to t("dashboards.link.index"), dashboards_index_path, id: "dashboards-index", class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to t("users.link.show"), user_path(current_user.id), id: "users-show", class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to t("admin.users.link.index"), admin_users_path, id: "admin-users-index", class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to t("co2_emission_factors.link.index"), co2_emission_factors_path( q: { fiscal_year_eq: 1.year.ago.year.to_s }), id: "co2-emission-factors-index", class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to t("common.sign_out"), destroy_user_session_path, method: :delete, id: "sign-out", class: "nav-link" %></li>
 
-      </ul>
+              <% elsif user_signed_in? %>
+                <li class="nav-item"><%= link_to t("dashboards.link.index"), dashboards_index_path, id: "dashboards-index", class: "nav-link", class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to t("branches.link.index"), branches_path, id: "branches-index", class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to t("users.link.show"), user_path(current_user.id), id: "users-show", class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to t("users.link.index"), users_path, id: "users-index", class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to t("co2_emission_factors.link.index"), co2_emission_factors_path( q: { fiscal_year_eq: 1.year.ago.year.to_s }), id: "co2-emission-factors-index", class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to t("common.sign_out"), destroy_user_session_path, method: :delete, id: "sign-out", class: "nav-link" %></li>
+              <% end %>
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+
       <% if user_signed_in? %>
-        <p><%= current_user.company.name %> ー <%= current_user.name %> 様（ログイン中）</p>
+        <p class="text-end"><%= current_user.company.name %> ー <%= current_user.name %> 様（ログイン中）</p>
       <% end %>
-    </nav>
+    </header>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
 
     <footer class="py-4 bg-light mt-auto">
 			<div class="container-fluid px-4">
