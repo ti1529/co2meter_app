@@ -1,49 +1,65 @@
 <% content_for :title, "New branch" %>
 
-<h1><%= t(".title") %></h1>
+<div class="row justify-content-center">
+  <div class="col-sm-8">
 
-<div class="accordion" id="accordion-chatgpt">
-  <div class="accordion-item">
-    <h3 class="accordion-header">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        都市区分が不明な場合はこちらをクリック
-      </button>
-    </h3>
+    <h1 class="mb-4"><%= t(".title") %></h1>
 
-    <% if @chat_response.present? %>
-      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-    <% else %>
-      <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-    <% end %>
+    <div class="accordion" id="accordion-chatgpt">
+      <div class="accordion-item">
+        <h3 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            都市区分が不明な場合はこちらをクリック
+          </button>
+        </h3>
 
-      <div class="accordion-body">
-        <p>都道府県・市町村を入力し、「ChatGPTに尋ねる」をクリックすると、<br>都市区分を回答します。</p>
-        <%= form_with(url: inquire_branches_path, method: :post, local: true) do |f| %>
-          <div>
-            <%= f.label :ask_prefecture, "都道府県" %>
-            <%= f.text_field :ask_prefecture %>
+        <% if @chat_response.present? %>
+          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+        <% else %>
+          <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <% end %>
+
+          <div class="accordion-body">
+            <p>都道府県・市町村を入力し、「ChatGPTに尋ねる」をクリックすると、<br>都市区分を回答します。</p>
+            <%= form_with(url: inquire_branches_path, method: :post, local: true) do |f| %>
+              <div class="row mb-3">
+                <div class="col-sm-2">
+                  <%= f.label :ask_prefecture, "都道府県", class: "col-form-label" %>
+                </div>
+                <div class="col-sm-6">
+                  <%= f.text_field :ask_prefecture, class: "form-control" %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-2">
+                  <%= f.label :ask_city, "市町村", class: "col-form-label" %>
+                </div>
+                <div class="col-sm-6">
+                  <%= f.text_field :ask_city, class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="text-center my-3">
+                <%= f.submit "ChatGPTに尋ねる", class: "btn btn-primary" %>
+              </div>
+            <% end %>        
           </div>
-          <div>
-            <%= f.label :ask_city, "市町村" %>
-            <%= f.text_field :ask_city %>
-          </div>
-
-          <div>
-            <%= f.submit "ChatGPTに尋ねる" %>
-          </div>
-        <% end %>        
+        </div>
       </div>
     </div>
+
+    <% if @chat_response.present? %>
+      <div id="chatgpt-response" class="alert alert-primary bg-light my-4" role="alert">
+        <h3>ChatGPTによる回答</h3>
+        <p><%= simple_format(@chat_response) %></p>
+        <p>※この情報はChatGPTによる回答です。<br>内容に誤りが含まれる可能性がありますので、参考情報としてご利用ください。</p>
+      </div>
+    <% end %>
+
+
+    <%= render "form", branch: @branch %>
+
+
   </div>
 </div>
 
-<% if @chat_response.present? %>
-  <div id="chatgpt-response">
-    <p>ChatGPTによる回答</p>
-    <p><%= simple_format(@chat_response) %></p>
-    <p>※この情報はChatGPTによる回答です。<br>内容に誤りが含まれる可能性がありますので、参考情報としてご利用ください。</p>
-  </div>
-<% end %>
-
-
-<%= render "form", branch: @branch %>

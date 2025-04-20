@@ -6,11 +6,10 @@
 
     <div class="row">
       <div class="col-sm-6">
-    <div class="d-flex justify-content-center my-4">
-      <%= link_to t("common.edit"), edit_company_path(@company), class: "btn btn-info" %> 
-      <%= button_to t("common.delete"), @company, method: :delete, data: { confirm: t("confirmations.delete.company", company_name: @company.name)}, id: "destroy-company", class: "btn btn-danger ms-3" %>
-    </div>
-
+        <div class="d-flex justify-content-center my-4">
+          <%= link_to t("common.edit"), edit_company_path(@company), class: "btn btn-info" %> 
+          <%= button_to t("common.delete"), @company, method: :delete, data: { confirm: t("confirmations.delete.company", company_name: @company.name)}, id: "destroy-company", class: "btn btn-danger ms-3" %>
+        </div>
       </div>
     </div>
   </div>

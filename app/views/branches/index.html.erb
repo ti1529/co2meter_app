@@ -3,13 +3,15 @@
 
 <h1><%= t(".title") %></h1>
 
-<%= link_to t("branches.link.new"), new_branch_path, id: "branches-new" %>
+<div class="text-end">
+  <%= link_to t("branches.link.new"), new_branch_path, id: "branches-new", class: "btn btn-success btn-lg", role: "button" %>
+</div>
 
-<table>
-  <thead>
+<table class="table my-4">
+  <thead class="table-light">
     <tr>
-      <th><%= Branch.human_attribute_name(:name) %></th>
-      <th><%= t("common.address") %></th>
+      <th scope="col"><%= Branch.human_attribute_name(:name) %></th>
+      <th scope="col"><%= t("common.address") %></th>
 
       <th colspan="3" ></th>
     </tr>
@@ -17,13 +19,13 @@
 
   <tbody>
     <% @branches.each do |branch| %>
-      <tr>
+      <tr class="align-middle">
         <td><%= branch.name %></td>
         <td><%= "#{branch.prefecture} #{branch.city}" %></td>
 
-        <td><%= link_to t("common.show"), branch %></td>
-        <td><%= link_to t("common.edit"), edit_branch_path(branch) %></td>
-        <td><%= link_to t("branch_fiscal_year_stats.link.index"), branch_fiscal_year_stats_path(q: { branch_id_eq: branch.id}) %></td>
+        <td class="text-center"><%= link_to t("common.show"), branch, class: "btn btn-info" %></td>
+        <td class="text-center"><%= link_to t("common.edit"), edit_branch_path(branch), class: "btn btn-info" %></td>
+        <td class="text-center"><%= link_to t("branch_fiscal_year_stats.link.index"), branch_fiscal_year_stats_path(q: { branch_id_eq: branch.id}), class: "btn btn-primary" %></td>
       </tr>
     <% end %>
   </tbody>

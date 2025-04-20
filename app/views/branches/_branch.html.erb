@@ -1,37 +1,65 @@
 <div id="<%= dom_id branch %>">
-  <p>
-    <strong><%= Branch.human_attribute_name(:name) %>：</strong>
-    <%= branch.name %>
-  </p>
 
-  <p>
-    <strong><%= Branch.human_attribute_name(:workplace_type) %>：</strong>
-    <%= branch.workplace_type_i18n %>
-  </p>
+  <div class="row">
+    <div class="col-sm-4">
+      <p><strong><%= Branch.human_attribute_name(:name) %>：</strong></p>
+    </div>
+    <div class="col-sm-8">
+      <p><%= branch.name %></p>
+    </div>
+  </div>
 
-  <p>
-    <strong><%= Branch.human_attribute_name(:city_category) %>：</strong>
-    <%= branch.city_category_i18n %>
-  </p>
+  <div class="row">
+    <div class="col-sm-4">
+      <p><strong><%= Branch.human_attribute_name(:workplace_type) %>：</strong></p>
+    </div>
+    <div class="col-sm-8">
+      <p><%= branch.workplace_type_i18n %></p>
+    </div>
+  </div>
 
-  <p>
-    <strong><%= Branch.human_attribute_name(:postcode) %>：</strong>
-    <%= branch.postcode %>
-  </p>
+  <div class="row">
+    <div class="col-sm-4">
+      <p><strong><%= Branch.human_attribute_name(:city_category) %>：</strong></p>
+    </div>
+    <div class="col-sm-8">
+      <p><%= branch.city_category_i18n %></p>
+    </div>
+  </div>
 
-  <p>
-    <strong><%= t("common.address") %>：</strong>
-    <%= "#{branch.prefecture} #{branch.city}" %>
-  </p>
+  <div class="row">
+    <div class="col-sm-4">
+      <p><strong><%= Branch.human_attribute_name(:postcode) %>：</strong></p>
+    </div>
+    <div class="col-sm-8">
+      <p><%= branch.postcode %></p>
+    </div>
+  </div>
 
-  <p>
-    <strong><%= Branch.human_attribute_name(:address_line1) %>：</strong>
-    <%= branch.address_line1 %>
-  </p>
+  <div class="row">
+    <div class="col-sm-4">
+      <p><strong><%= t("common.address") %>：</strong></p>
+    </div>
+    <div class="col-sm-8">
+      <p><%= "#{branch.prefecture} #{branch.city}" %></p>
+    </div>
+  </div>
 
-  <p>
-    <strong><%= Branch.human_attribute_name(:address_line2) %>：</strong>
-    <%= branch.address_line2 %>
-  </p>
+  <div class="row">
+    <div class="col-sm-4">
+      <p><strong><%= Branch.human_attribute_name(:address_line1) %>：</strong></p>
+    </div>
+    <div class="col-sm-8">
+      <p><%= branch.address_line1 %></p>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-sm-4">
+      <p><strong><%= Branch.human_attribute_name(:address_line2) %>：</strong></p>
+    </div>
+    <div class="col-sm-8">
+      <p><%= branch.address_line2 %></p>
+    </div>
+  </div>
 </div>
