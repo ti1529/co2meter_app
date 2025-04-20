@@ -1,7 +1,8 @@
 <% content_for :title, "New co2 emission factor" %>
 
-<h1><%= t(".title") %></h1>
-
-<%= render "form", co2_emission_factor: @co2_emission_factor %>
-
-<br>
+<div class="row justify-content-center">
+  <div class="col-sm-8">
+    <h1><%= t(".title") %></h1>
+    <%= render "form", co2_emission_factor: @co2_emission_factor %>
+  </div>
+</div>

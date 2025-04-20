@@ -1,4 +1,4 @@
-<%= form_with(model: co2_emission_factor) do |form| %>
+<%= form_with(model: co2_emission_factor, class: "mt-4") do |form| %>
   <% if co2_emission_factor.errors.any? %>
     <div id="error_explanation">
       <h2><%= co2_emission_factor.errors.count %>件のエラーが発生しました </h2>
@@ -11,49 +11,69 @@
     </div>
   <% end %>
 
-  <div>
-    <span class="required-mark">※</span>
-    <%= form.label :fiscal_year, style: "display: block" %>
-    <%= form.select :fiscal_year, (2000..2100).map(&:to_s), selected: co2_emission_factor.fiscal_year || Time.current.year.to_s %>
+  <div class="row mb-3">
+    <div class="col-sm-4">
+      <%= form.label :fiscal_year, class: "col-sm-label" %>
+      <span class="required-mark">※</span>
+    </div>
+    <div class="col-sm-8">
+      <%= form.select :fiscal_year, (2000..2100).map(&:to_s), { selected: co2_emission_factor.fiscal_year || Time.current.year.to_s }, { class: "form-select w-auto" } %>
+    </div>
   </div>
 
-  <div>
-    <span class="required-mark">※</span>
-    <%= form.label :workplace_type, style: "display: block" %>
-    <%= form.select :workplace_type,
-      Branch.workplace_types.keys.map { |key| [Branch.workplace_types_i18n[key], key] },
-      { include_blank: "選択してください" }
-    %>
+  <div class="row mb-3">
+    <div class="col-sm-4">
+      <%= form.label :workplace_type, class: "col-form-label" %>
+      <span class="required-mark">※</span>
+    </div>
+    <div class="col-sm-8">
+      <%= form.select :workplace_type,
+        Branch.workplace_types.keys.map { |key| [Branch.workplace_types_i18n[key], key] },
+        { include_blank: "選択してください" },
+        { class: "form-select w-auto" }
+      %>
+    </div>
   </div>
 
-  <div>
-    <span class="required-mark">※</span>
-    <%= form.label :city_category, style: "display: block" %>
-    <%= form.select :city_category,
-      Branch.city_categories.keys.map { |key| [Branch.city_categories_i18n[key], key]},
-      { include_blank: "選択してください" }
-    %>
-
+  <div class="row mb-3">
+    <div class="col-sm-4">
+      <%= form.label :city_category, class: "col-form-label" %>
+      <span class="required-mark">※</span>
+    </div>
+    <div class="col-sm-8">
+      <%= form.select :city_category,
+        Branch.city_categories.keys.map { |key| [Branch.city_categories_i18n[key], key]},
+        { include_blank: "選択してください" },
+        { class: "form-select w-auto"}
+      %>
+    </div>
   </div>
 
-  <div>
-    <span class="required-mark">※</span>
-    <%= form.label :co2_emission_factor, style: "display: block" %>
-    <%= form.number_field :co2_emission_factor, min: 0, step: 0.001 %>
+  <div class="row mb-3">
+    <div class="col-sm-4">
+      <%= form.label :co2_emission_factor, class: "col-form-label" %>
+      <span class="required-mark">※</span>
+    </div>
+    <div class="col-sm-8">
+      <%= form.number_field :co2_emission_factor, min: 0, step: 0.001, class: "form-control w-auto" %>
+    </div>
   </div>
 
-  <div>
-    <span class="required-mark">※</span>
-    <%= form.label :co2_emission_factor_unit, style: "display: block" %>
-    <%= form.select :co2_emission_factor_unit,["kgCO2/人・日"] %>
+  <div class="row mb-3">
+    <div class="col-sm-4">
+      <%= form.label :co2_emission_factor_unit, class: "col-form-label" %>
+      <span class="required-mark">※</span>
+    </div>
+    <div class="col-sm-8">
+      <%= form.select :co2_emission_factor_unit,["kgCO2/人・日"], {}, { class: "form-select w-auto" } %>
+    </div>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="text-center my-4">
+    <%= form.submit class: "btn btn-primary" %>
+    <p>
+      <span class="required-mark">※</span>
+      がある項目は入力必須です
+    </p>
   </div>
 <% end %>
-
-<p>
-	<span class="required-mark">※</span>
-	がある項目は入力必須です
-</p>
