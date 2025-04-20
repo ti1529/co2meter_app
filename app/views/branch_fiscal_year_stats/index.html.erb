@@ -3,38 +3,47 @@
 
 <h1><%= t(".title") %></h1>
 
-<%= link_to t("branch_fiscal_year_stats.link.new"), new_branch_fiscal_year_stat_path, id: "branch-fiscal-year-stats-new" %>
+<div class="text-end">
+  <%= link_to t("branch_fiscal_year_stats.link.new"), new_branch_fiscal_year_stat_path, id: "branch-fiscal-year-stats-new", class: "btn btn-success btn-lg" %>
+</div>
 
-<div>
-  <%= search_form_for @q do |f|  %>
+<%= search_form_for @q do |f|  %>
+<div class="row justify-content-center">
+  <div class="col-sm-auto row border border-dark p-3">
+  <div class="col-sm-auto d-flex flex-column">
     <div>
-      <%= f.label "期間（年度）" %>
+      <%= f.label "期間（年度）", class: "col-form-label" %>
+    </div>
+    <div>
       <%= f.select :fiscal_year_gteq, @fiscal_years, selected: params.dig(:q, :fiscal_year_gteq) || @fiscal_years.min  %>
       <span> 〜 </span>
       <%= f.select :fiscal_year_lteq, @fiscal_years, selected: params.dig(:q, :fiscal_year_lteq) || @fiscal_years.max  %>
     </div>
+  </div>
 
-    <div>
-      <%= f.label :branch_id_eq, "支店名" %>
-      <%= f.collection_select :branch_id_eq, @branches, :id, :name, include_blank: "指定なし"  %>
-    </div>
+  <div class="col-sm-auto d-flex flex-column ms-4">
+    <%= f.label :branch_id_eq, "支店名", class: "col-form-label" %>
+    <%= f.collection_select :branch_id_eq, @branches, :id, :name, include_blank: "指定なし", class: "form-select"  %>
+  </div>
 
-    <div>
-      <%= f.submit %>
-    </div>
-  <% end %>
+  <div class="col-sm-auto d-flex align-items-center ms-4">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+  </div>
 </div>
+<% end %>
 
 
 
-<table>
-  <thead>
+
+<table class="table my-4">
+  <thead class="table-light">
     <tr>
-      <th><%= sort_link(@q, :fiscal_year, BranchFiscalYearStat.human_attribute_name(:fiscal_year)) %></th>
-      <th><%= BranchFiscalYearStat.human_attribute_name(:branch) %></th>
-      <th><%= BranchFiscalYearStat.human_attribute_name(:annual_working_days) %></th>
-      <th><%= BranchFiscalYearStat.human_attribute_name(:annual_employee_count) %></th>
-      <th><%= BranchFiscalYearStat.human_attribute_name(:updater) %></th>
+      <th scope="col"><%= sort_link(@q, :fiscal_year, BranchFiscalYearStat.human_attribute_name(:fiscal_year)) %></th>
+      <th scope="col"><%= BranchFiscalYearStat.human_attribute_name(:branch) %></th>
+      <th scope="col"><%= BranchFiscalYearStat.human_attribute_name(:annual_working_days) %></th>
+      <th scope="col"><%= BranchFiscalYearStat.human_attribute_name(:annual_employee_count) %></th>
+      <th scope="col"><%= BranchFiscalYearStat.human_attribute_name(:updater) %></th>
 
       <th colspan="2" ></th>
     </tr>
@@ -42,17 +51,17 @@
 
   <tbody>
     <% @branch_fiscal_year_stats.each do |stat| %>
-      <tr>
+      <tr class="align-middle">
         <td><%= stat.fiscal_year %></td>
         <td><%= stat.branch.name %></td>
         <td><%= stat.annual_working_days %></td>
         <td><%= stat.annual_employee_count %></td>
         <td><%= stat.updater.name %></td>
 
-        <td><%= link_to t("common.adjustment"), edit_branch_fiscal_year_stat_path(stat) %></td>
-        <td><%= link_to t("common.delete"), stat, method: :delete, data: {
+        <td class="text-center"><%= link_to t("common.adjustment"), edit_branch_fiscal_year_stat_path(stat), class: "btn btn-info" %></td>
+        <td class="text-center"><%= link_to t("common.delete"), stat, method: :delete, data: {
                   confirm: t("confirmations.delete.branch_fiscal_year_stat", branch_name: stat.branch.name, fiscal_year: stat.fiscal_year )
-                } %></td>
+                }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
