@@ -17,7 +17,7 @@
       <span class="required-mark">※</span>
     </div>
     <div class="col-sm-8">
-      <%= form.select :fiscal_year, (2000..2100).map(&:to_s), selected: form.object.fiscal_year.presence || 1.year.ago.year.to_s, class: "form-select" %>
+      <%= form.select :fiscal_year, (2000..2100).map(&:to_s), { selected: form.object.fiscal_year.presence || 1.year.ago.year.to_s }, { class: "form-select w-auto" } %>
     </div>
   </div>
 
@@ -28,7 +28,7 @@
     </div>
     <div class="col-sm-8">
       <%= form.select :branch_id,
-        branches.map { |branch| [ branch.name, branch.id] } , selected: form.object.branch_id, class: "form-select"
+        branches.map { |branch| [ branch.name, branch.id] } , { selected: form.object.branch_id }, { class: "form-select w-auto" }
       %>
     </div>
   </div>
@@ -39,7 +39,7 @@
       <span class="required-mark">※</span>
     </div>
     <div class="col-sm-8">
-      <%= form.number_field :annual_working_days, in: 0..365, class: "form-control" %>
+      <%= form.number_field :annual_working_days, in: 0..365, class: "form-control w-auto" %>
     </div>
   </div>
 
@@ -49,7 +49,7 @@
       <span class="required-mark">※</span>
     </div>
     <div class="col-sm-8">
-      <%= form.number_field :annual_employee_count, min: 0, class: "form-control" %>
+      <%= form.number_field :annual_employee_count, min: 0, class: "form-control w-auto" %>
     </div>
   </div>
 

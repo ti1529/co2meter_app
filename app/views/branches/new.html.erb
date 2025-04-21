@@ -22,20 +22,20 @@
           <div class="accordion-body">
             <p>都道府県・市町村を入力し、「ChatGPTに尋ねる」をクリックすると、<br>都市区分を回答します。</p>
             <%= form_with(url: inquire_branches_path, method: :post, local: true) do |f| %>
-              <div class="row mb-3">
+              <div class="row justify-content-center mb-3">
                 <div class="col-sm-2">
                   <%= f.label :ask_prefecture, "都道府県", class: "col-form-label" %>
                 </div>
                 <div class="col-sm-6">
-                  <%= f.text_field :ask_prefecture, class: "form-control" %>
+                  <%= f.text_field :ask_prefecture, class: "form-control w-auto" %>
                 </div>
               </div>
-              <div class="row">
+              <div class="row justify-content-center">
                 <div class="col-sm-2">
                   <%= f.label :ask_city, "市町村", class: "col-form-label" %>
                 </div>
                 <div class="col-sm-6">
-                  <%= f.text_field :ask_city, class: "form-control" %>
+                  <%= f.text_field :ask_city, class: "form-control w-auto" %>
                 </div>
               </div>
 

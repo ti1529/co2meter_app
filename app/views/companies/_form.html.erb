@@ -17,7 +17,7 @@
       <span class="required-mark">※</span>
     </div>
     <div class="col-sm-8">
-      <%= form.text_field :name, class: "form-control" %>
+      <%= form.text_field :name, class: "form-control w-auto" %>
     </div>
   </div>
 
@@ -27,14 +27,14 @@
       <span class="required-mark">※</span>
     </div>
     <div class="col-sm-8">
-      <%= form.text_field :contact_name, class: "form-control" %>
+      <%= form.text_field :contact_name, class: "form-control w-auto" %>
     </div>
   </div>
 
   <div class="row mb-3">
     <%= form.label :contact_email, class: "col-sm-4 col-form-control" %>
     <div class="col-sm-8">
-      <%= form.email_field :contact_email, class: "form-control" %>
+      <%= form.email_field :contact_email, class: "form-control w-auto" %>
     </div>
   </div>
 
@@ -45,7 +45,7 @@
     </div>
     <div class="col-sm-8">
       <%= form.select :status,
-        Company.statuses.keys.map { |key| [Company.statuses_i18n[key],key]}
+        Company.statuses.keys.map { |key| [Company.statuses_i18n[key],key]}, {}, { class: "form-control w-auto"}
       %>
     </div>
 

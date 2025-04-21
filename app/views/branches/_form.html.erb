@@ -17,7 +17,7 @@
       <span class="required-mark">※</span>
     </div>
     <div class="col-sm-8">
-      <%= form.text_field :name, class: "form-control" %>
+      <%= form.text_field :name, class: "form-control w-auto" %>
     </div>
   </div>
 
@@ -30,7 +30,7 @@
       <%= form.select :workplace_type,
         Branch.workplace_types.keys.map { |key| [Branch.workplace_types_i18n[key], key] },
         { include_blank: "選択してください" },
-        { class: "form-select"}
+        { class: "form-select w-auto"}
       %>
     </div>
   </div>
@@ -44,7 +44,7 @@
       <%= form.select :city_category,
         Branch.city_categories.keys.map { |key| [Branch.city_categories_i18n[key], key]},
         { include_blank: "選択してください" },
-        { class: "form-select"}
+        { class: "form-select w-auto"}
       %>
     </div>
   </div>
@@ -54,7 +54,7 @@
       <%= form.label :postcode, class: "col-form-label" %>
     </div>
     <div class="col-sm-8">
-      <%= form.text_field :postcode, placeholder: "ハイフンは不要です", class: "form-control" %>
+      <%= form.text_field :postcode, placeholder: "ハイフンは不要です", class: "form-control w-auto" %>
     </div>
   </div>
 
@@ -63,12 +63,12 @@
       <%= form.label t("common.address"), class: "col-form-label" %>
       <span class="required-mark">※</span>
     </div>
-    <div class="col-sm-4">
-      <%= form.text_field :prefecture, placeholder: "都道府県", class: "form-control" %>
+    <div class="col-sm-3">
+      <%= form.text_field :prefecture, placeholder: "都道府県", class: "form-control w-auto" %>
 
     </div>
-    <div class="col-sm-4">
-      <%= form.text_field :city, placeholder: "市町村", class: "form-control" %>
+    <div class="col-sm-3">
+      <%= form.text_field :city, placeholder: "市町村", class: "form-control w-auto" %>
     </div>
   </div>
 
@@ -77,7 +77,7 @@
       <%= form.label :address_line1, class: "col-form-label" %>
     </div>
     <div class="col-sm-8">
-      <%= form.text_field :address_line1, class: "form-control" %>
+      <%= form.text_field :address_line1, class: "form-control w-auto" %>
     </div>
   </div>
 
@@ -86,7 +86,7 @@
       <%= form.label :address_line2, class: "col-form-label" %>
     </div>
     <div class="col-sm-8">
-      <%= form.text_field :address_line2, class: "form-control" %>
+      <%= form.text_field :address_line2, class: "form-control w-auto" %>
     </div>
   </div>
 

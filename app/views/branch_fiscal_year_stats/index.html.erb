@@ -14,16 +14,16 @@
     <div>
       <%= f.label "期間（年度）", class: "col-form-label" %>
     </div>
-    <div>
-      <%= f.select :fiscal_year_gteq, @fiscal_years, selected: params.dig(:q, :fiscal_year_gteq) || @fiscal_years.min  %>
-      <span> 〜 </span>
-      <%= f.select :fiscal_year_lteq, @fiscal_years, selected: params.dig(:q, :fiscal_year_lteq) || @fiscal_years.max  %>
+    <div class="d-flex align-items-center">
+      <%= f.select :fiscal_year_gteq, @fiscal_years, { selected: params.dig(:q, :fiscal_year_gteq) || @fiscal_years.min }, { class: "form-select w-auto"}  %>
+      <span>　〜　</span>
+      <%= f.select :fiscal_year_lteq, @fiscal_years, { selected: params.dig(:q, :fiscal_year_lteq) || @fiscal_years.max }, { class: "form-select w-auto"} %>
     </div>
   </div>
 
   <div class="col-sm-auto d-flex flex-column ms-4">
     <%= f.label :branch_id_eq, "支店名", class: "col-form-label" %>
-    <%= f.collection_select :branch_id_eq, @branches, :id, :name, include_blank: "指定なし", class: "form-select"  %>
+    <%= f.collection_select :branch_id_eq, @branches, :id, :name, { include_blank: "指定なし" }, { class: "form-select w-auto" }  %>
   </div>
 
   <div class="col-sm-auto d-flex align-items-center ms-4">

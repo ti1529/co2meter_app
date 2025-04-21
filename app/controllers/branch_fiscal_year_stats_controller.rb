@@ -13,7 +13,9 @@ class BranchFiscalYearStatsController < ApplicationController
 
     @fiscal_years = BranchFiscalYearStat.joins(:branch)
                                         .where(branches: { company_id: current_user.company.id })
+                                        .order(fiscal_year: :asc)
                                         .distinct.pluck(:fiscal_year)
+
     @branches = current_user.company.branches
   end
 

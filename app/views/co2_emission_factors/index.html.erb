@@ -16,10 +16,10 @@
           <div>
             <%= f.label "期間（年度）", class: "col-form-label" %>
           </div>
-          <div>
-            <%= f.select :fiscal_year_gteq, @fiscal_years, selected: params.dig(:q, :fiscal_year_gteq) || 1.year.ago.year.to_s || @fiscal_years.min  %>
-            <span> 〜 </span>
-            <%= f.select :fiscal_year_lteq, @fiscal_years, selected: params.dig(:q, :fiscal_year_lteq) || 1.year.ago.year.to_s || @fiscal_years.max  %>
+          <div class="d-flex align-items-center">
+            <%= f.select :fiscal_year_gteq, @fiscal_years, { selected: params.dig(:q, :fiscal_year_gteq) || 1.year.ago.year.to_s || @fiscal_years.min }, { class: "form-select w-auto"}  %>
+            <span>　〜　</span>
+            <%= f.select :fiscal_year_lteq, @fiscal_years, { selected: params.dig(:q, :fiscal_year_lteq) || 1.year.ago.year.to_s || @fiscal_years.max }, { class: "form-select w-auto"} %>
           </div>
         </div>
 
@@ -28,7 +28,7 @@
             <%= f.label :workplace_type_eq, "勤務形態", class: "col-form-label" %>
           </div>
           <div>
-            <%= f.select :workplace_type_eq, Co2EmissionFactor.workplace_types.keys.map.with_index { |k, i| [t("enums.co2_emission_factor.workplace_type.#{k}"), i]}  ,include_blank: "指定なし" %>
+            <%= f.select :workplace_type_eq, Co2EmissionFactor.workplace_types.keys.map.with_index { |k, i| [t("enums.co2_emission_factor.workplace_type.#{k}"), i]}, { include_blank: "指定なし"}, { class: "form-select"} %>
           </div>
         </div>
 
