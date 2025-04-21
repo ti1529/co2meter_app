@@ -65,7 +65,9 @@ class BranchesController < ApplicationController
     city = params[:ask_city]
 
     if prefecture.present? && city.present?
-      @chat_response = ChatgptService.new.get_city_category(prefecture, city)
+      # @chat_response = ChatgptService.new.get_city_category(prefecture, city)
+      @chat_response = "千葉市　大都市" # （仮）テスト完了後、修正する
+
       render :new
     else
       flash.now[:notice] = "都道府県、市町村を入力してください。"

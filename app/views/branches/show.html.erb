@@ -1,8 +1,17 @@
-<h1><%= t(".title") %></h1>
+<div class="row justify-content-center">
+  <div class="col-sm-8">
 
-<%= render @branch %>
+    <h1 class="mb-4"><%= t(".title") %></h1>
 
-<div>
-  <%= link_to t("common.edit"), edit_branch_path(@branch) %> 
-  <%= button_to t("common.delete"), @branch, method: :delete, data: { confirm: t("confirmations.delete.branch", branch_name: @branch.name)}, id: "destroy-branch" %>
+    <%= render @branch %>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="d-flex justify-content-center my-4">
+          <%= link_to t("common.edit"), edit_branch_path(@branch), class: "btn btn-info" %> 
+          <%= button_to t("common.delete"), @branch, method: :delete, data: { confirm: t("confirmations.delete.branch", branch_name: @branch.name)}, id: "destroy-branch", class: "btn btn-danger ms-3" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -123,11 +123,12 @@ ja:
     edit: 編集
     adjustment: 修正
     delete: 削除
-    back: 戻る
+    back: 詳細へ戻る
     address: 住所
     sign_out: ログアウト
     alert: アクセス権限がありません
     is_admin: あり
     not_admin: なし
     company_name: 所属会社名
+    app_title: CO2meter
     

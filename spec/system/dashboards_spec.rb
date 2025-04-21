@@ -76,7 +76,7 @@ RSpec.describe "Dashboards", type: :system, selenium: true do
         it 'その期間のCO2排出量（算定結果）のみ表示される' do
           select "2024", from: "q_fiscal_year_gteq"
           select "2024", from: "q_fiscal_year_lteq"
-          click_on "検索"
+          click_on "表示"
           sleep 0.1
           within all("tbody").first do
             expect(page).to have_selector "td", text: "2024"
@@ -88,7 +88,7 @@ RSpec.describe "Dashboards", type: :system, selenium: true do
       context '支店名で検索した場合' do
         it 'その支店と一致する支店のCO2排出量（算定結果）のみ表示される' do
           select branch_2.name, from: "q_branch_id_eq"
-          click_on "検索"
+          click_on "表示"
           sleep 0.1
           within all("tbody").first do
             expect(page).to have_selector "td", text: branch_2.name
@@ -102,7 +102,7 @@ RSpec.describe "Dashboards", type: :system, selenium: true do
           select "2024", from: "q_fiscal_year_gteq"
           select "2024", from: "q_fiscal_year_lteq"
           select branch_2.name, from: "q_branch_id_eq"
-          click_on "検索"
+          click_on "表示"
           sleep 0.1
 
           within all("tbody").first do

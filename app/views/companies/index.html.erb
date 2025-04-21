@@ -2,32 +2,31 @@
 <% content_for :title, "Companies" %>
 
 <h1><%= t ".title" %></h1>
-<%= link_to t("companies.link.new"), new_company_path, id: "companies-new" %>
+<div class="text-end"> 
+  <%= link_to t("companies.link.new"), new_company_path, id: "companies-new", class: "btn btn-success btn-lg", role: "button" %>
+</div>
 
-
-<table>
-  <thead>
+<table class="table my-4">
+  <thead class="table-light">
     <tr>
-      <th><%= Company.human_attribute_name(:name) %></th>
-      <th><%= Company.human_attribute_name(:status) %></th>
-      <th><%= t("attributes.created_at") %></th>
+      <th scope="col"><%= Company.human_attribute_name(:name) %></th>
+      <th scope="col"><%= Company.human_attribute_name(:status) %></th>
+      <th scope="col"><%= t("attributes.created_at") %></th>
 
-      <th colspan="2"></th>
+      <th scope="col" colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @companies.each do |company| %>
       <tr>
-        <td><%= company.name %></td>
-        <td><%= company.status_i18n %></td>
-        <td><%= company.created_at.strftime("%F") %></td>
+        <td class="align-middle"><%= company.name %></td>
+        <td class="align-middle"><%= company.status_i18n %></td>
+        <td class="align-middle"><%= company.created_at.strftime("%F") %></td>
 
-        <td><%= link_to t("common.show"), company %></td>
-        <td><%= link_to t("common.edit"), edit_company_path(company) %></td>
+        <td class="align-middle text-center"><%= link_to t("common.show"), company, class: "btn btn-info", role: "button" %></td>
+        <td class="align-middle text-center"><%= link_to t("common.edit"), edit_company_path(company), class: "btn btn-info", role: "button" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-

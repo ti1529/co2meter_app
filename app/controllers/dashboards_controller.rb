@@ -1,7 +1,7 @@
 class DashboardsController < ApplicationController
   def index
     @branches = current_user.company.branches
-    @fiscal_years = BranchFiscalYearStat.joins(:branch).where(branches: { company_id: current_user.company.id }).distinct.pluck(:fiscal_year)
+    @fiscal_years = BranchFiscalYearStat.joins(:branch).where(branches: { company_id: current_user.company.id }).order(fiscal_year: :asc).distinct.pluck(:fiscal_year)
 
     @q = BranchFiscalYearStat.ransack(params[:q])
     @q.sorts = [ "fiscal_year asc", "branch_id asc" ] if @q.sorts.empty?

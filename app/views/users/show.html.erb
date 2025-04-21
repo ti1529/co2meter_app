@@ -1,29 +1,57 @@
-<h1><%= t ".title" %></h1>
+<div class="row justify-content-center">
+  <div class="col-sm-8">
 
-<p>
-  <strong><%= User.human_attribute_name(:name) %>:</strong>
-  <%= @user.name %>
-</p>
+    <h1 class="mb-4"><%= t ".title" %></h1>
 
-<% if current_user.admin? %>
-  <p>
-    <strong><%= User.human_attribute_name(:company) %>:</strong>
-    <%= @user.company.name %>
-  </p>
-<% end %>
+    <div class="row">
+      <div class="col-sm-4">
+        <p><strong><%= User.human_attribute_name(:name) %>:</strong></p>
+      </div>
+      <div class="col-sm-8">
+        <p><%= @user.name %></p>
+      </div>
+    </div>
 
-<p>
-  <strong><%= User.human_attribute_name(:email) %>:</strong>
-  <%= @user.email %>
-</p>
+    <% if current_user.admin? %>
+      <div class="row">
+        <div class="col-sm-4">
+          <p><strong><%= User.human_attribute_name(:company) %>:</strong></p>
+        </div>
+        <div class="col-sm-8">
+          <p><%= @user.company.name %></p>
+        </div>
+      </div>
+    <% end %>
 
-<% if current_user.admin? %>
-  <p>
-    <strong><%= User.human_attribute_name(:admin) %>:</strong>
-    <%= @user.admin ? t("common.is_admin"): t("common.not_admin") %>
-  </p>
-<% end %>
+    <div class="row">
+      <div class="col-sm-4">
+        <p><strong><%= User.human_attribute_name(:email) %>:</strong></p>
+      </div>
+      <div class="col-sm-8">
+        <p><%= @user.email %></p>
+      </div>
+    </div>
 
-<div>
-  <%= link_to t("common.edit"), edit_user_registration_path(@user), id: "users-edit" %>
+
+    <% if current_user.admin? %>
+      <div class="row">
+        <div class="col-sm-4">
+          <p><strong><%= User.human_attribute_name(:admin) %>:</strong></p>
+        </div>
+        <div class="col-sm-8">
+          <p><%= @user.admin ? t("common.is_admin"): t("common.not_admin") %></p>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="row">
+      <div class="col-sm-6 text-center my-4">
+        <%= link_to t("common.edit"), edit_user_registration_path(@user), id: "users-edit", class: "btn btn-info" %>
+      </div>
+    </div>
+
+  </div>
 </div>
+
+
+

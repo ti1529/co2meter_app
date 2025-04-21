@@ -1,33 +1,35 @@
 <h1><%= t ".title" %></h1>
 
-<%= link_to t("admin.users.link.new"), new_admin_user_path, id: "admin-users-new" %>
+<div class="text-end">
+  <%= link_to t("admin.users.link.new"), new_admin_user_path, id: "admin-users-new", class: "btn btn-success btn-lg", role: "button" %>
+</div>
 
-<table>
-  <thead>
+<table class="table my-4">
+  <thead class="table-light">
     <tr>
-      <th><%= Company.human_attribute_name(:name) %></th>
-      <th><%= User.human_attribute_name(:name) %></th>
-      <th><%= User.human_attribute_name(:email) %></th>
-      <th><%= User.human_attribute_name(:admin) %></th>
+      <th scope="col"><%= Company.human_attribute_name(:name) %></th>
+      <th scope="col"><%= User.human_attribute_name(:name) %></th>
+      <th scope="col"><%= User.human_attribute_name(:email) %></th>
+      <th scope="col"><%= User.human_attribute_name(:admin) %></th>
       
-      <th colspan="2"></th>
+      <th colspan="2" scope="col"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.company.name %></td>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.admin ? t("common.is_admin"): t("common.not_admin")  %></td>
+        <td class="align-middle"><%= user.company.name %></td>
+        <td class="align-middle"><%= user.name %></td>
+        <td class="align-middle"><%= user.email %></td>
+        <td class="align-middle"><%= user.admin ? t("common.is_admin"): t("common.not_admin")  %></td>
 
-        <td><%= link_to t("common.edit"), edit_admin_user_path(user), id: "admin-users-edit" %></td>
-        <td><%= link_to t("common.delete"), [:admin, user], method: :delete, data: {
+        <td class="text-center"><%= link_to t("common.edit"), edit_admin_user_path(user), id: "admin-users-edit", class: "btn btn-info", role: "button"  %></td>
+        <td class="text-center"><%= link_to t("common.delete"), [:admin, user], method: :delete, data: {
                   confirm: t("confirmations.delete.admin_user",
                               company_name: user.company.name,
                               user_name: user.name)
-                  }, id: "destroy-admin-user" %></td>
+                  }, id: "destroy-admin-user", class: "btn btn-danger", role: "button" %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,4 +1,4 @@
-<%= form_with(model: branch) do |form| %>
+<%= form_with(model: branch, class: "my-4") do |form| %>
   <% if branch.errors.any? %>
     <div id="error_explanation">
       <h2><%= branch.errors.count %>件のエラーが発生しました </h2>
@@ -11,58 +11,92 @@
     </div>
   <% end %>
 
-  <div>
-    <span class="required-mark">※</span>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="row mb-3">
+    <div class="col-sm-4">
+      <%= form.label :name, class: "col-form-label" %>
+      <span class="required-mark">※</span>
+    </div>
+    <div class="col-sm-8">
+      <%= form.text_field :name, class: "form-control w-auto" %>
+    </div>
   </div>
 
-  <div>
-    <span class="required-mark">※</span>
-    <%= form.label :workplace_type, style: "display: block" %>
-    <%= form.select :workplace_type,
-      Branch.workplace_types.keys.map { |key| [Branch.workplace_types_i18n[key], key] },
-      { include_blank: "選択してください" }
-    %>
+  <div class="row mb-3">
+    <div class="col-sm-4">
+      <%= form.label :workplace_type, class: "col-form-control" %>
+      <span class="required-mark">※</span>
+    </div>
+    <div class="col-sm-8">
+      <%= form.select :workplace_type,
+        Branch.workplace_types.keys.map { |key| [Branch.workplace_types_i18n[key], key] },
+        { include_blank: "選択してください" },
+        { class: "form-select w-auto"}
+      %>
+    </div>
   </div>
 
-  <div>
-    <span class="required-mark">※</span>
-    <%= form.label :city_category, style: "display: block" %>
-    <%= form.select :city_category,
-      Branch.city_categories.keys.map { |key| [Branch.city_categories_i18n[key], key]},
-      { include_blank: "選択してください" }
-    %>
+  <div class="row mb-3">
+    <div class="col-sm-4">
+      <%= form.label :city_category, class: "col-form-label" %>
+      <span class="required-mark">※</span>
+    </div>
+    <div class="col-sm-8">
+      <%= form.select :city_category,
+        Branch.city_categories.keys.map { |key| [Branch.city_categories_i18n[key], key]},
+        { include_blank: "選択してください" },
+        { class: "form-select w-auto"}
+      %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :postcode, style: "display: block" %>
-    <%= form.text_field :postcode, placeholder: "ハイフンは不要です" %>
+  <div class="row mb-3">
+    <div class="col-sm-4">
+      <%= form.label :postcode, class: "col-form-label" %>
+    </div>
+    <div class="col-sm-8">
+      <%= form.text_field :postcode, placeholder: "ハイフンは不要です", class: "form-control w-auto" %>
+    </div>
   </div>
 
-  <div>
-    <span class="required-mark">※</span>
-    <%= form.label t("common.address"), style: "display: block" %>
-    <%= form.text_field :prefecture, placeholder: "都道府県" %>
-    <%= form.text_field :city, placeholder: "市町村" %>
+  <div class="row mb-3">
+    <div class="col-sm-4">
+      <%= form.label t("common.address"), class: "col-form-label" %>
+      <span class="required-mark">※</span>
+    </div>
+    <div class="col-sm-4">
+      <%= form.text_field :prefecture, placeholder: "都道府県", class: "form-control w-auto" %>
+
+    </div>
+    <div class="col-sm-4">
+      <%= form.text_field :city, placeholder: "市町村", class: "form-control w-auto" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :address_line1, style: "display: block" %>
-    <%= form.text_field :address_line1 %>
+  <div class="row mb-3">
+    <div class="col-sm-4">
+      <%= form.label :address_line1, class: "col-form-label" %>
+    </div>
+    <div class="col-sm-8">
+      <%= form.text_field :address_line1, class: "form-control w-auto" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :address_line2, style: "display: block" %>
-    <%= form.text_field :address_line2 %>
+  <div class="row mb-3">
+    <div class="col-sm-4">
+      <%= form.label :address_line2, class: "col-form-label" %>
+    </div>
+    <div class="col-sm-8">
+      <%= form.text_field :address_line2, class: "form-control w-auto" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="text-center my-4">
+    <%= form.submit class: "btn btn-primary" %>
+    <%= link_to t("common.back"), branch_path(branch), class: "btn btn-outline-secondary ms-3" if controller.action_name == "edit" %>
+
+    <p>
+      <span class="required-mark">※</span>
+      がある項目は入力必須です
+    </p>
   </div>
 <% end %>
-
-<p>
-	<span class="required-mark">※</span>
-	がある項目は入力必須です
-</p>

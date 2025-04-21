@@ -21,10 +21,7 @@
 
 
 .field_with_errors {
-  padding: 2px;
-  background-color: red;
-  color: white;
-  display: table; }
+  display: contents; }
 
 #error_explanation {
   width: 450px;

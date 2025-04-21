@@ -4,37 +4,35 @@
 	<h1 class="mt-4"><%= t(".title") %></h1>
 	
 	<% if @branches_without_current_year_stat.present? %>
-		<div class="row">
-			<div class="mb-4">
-				<div class="accordion" id="accordion-nodata-branches">
-					<div class="accordion-item">
-						<strong class="accordion-header">
-								一部の支店で「<%= "#{1.year.ago.year}" %>年度」の実績がまだ入力されていません。
-							<button id="branches-without-current-year-stat" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-								（一覧を確認するには、こちらをクリックしてください）
-							</button>
-						</strong>
-						<div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordion-nodata-branches">
-							<div class="accordion-body">
-								<ul>
-									<% @branches_without_current_year_stat.each do |branch| %>
-										<li><%= branch.name %> ⋯ <%= link_to "実績登録" , new_branch_fiscal_year_stat_path(branch_id: branch.id) %></li>
-									<% end %>
-								</ul>
-							</div>
-						</div>
+		<div class="accordion my-4" id="accordion-nodata-branches">
+			<div class="accordion-item">
+				<div class="accordion-header">
+					<button id="branches-without-current-year-stat" class="accordion-button text-bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+						<span><strong class="text-danger">一部の支店で「<%= "#{1.year.ago.year}" %>年度」の実績がまだ入力されていません。</strong><br>
+						（一覧を確認するには、こちらをクリックしてください）
+						</span>
+					</button>
+				</div>
+				<div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordion-nodata-branches">
+					<div class="accordion-body">
+						<ul>
+							<% @branches_without_current_year_stat.each do |branch| %>
+								<li><%= branch.name %> ⋯ <%= link_to "実績登録" , new_branch_fiscal_year_stat_path(branch_id: branch.id), class: "btn btn-link" %></li>
+							<% end %>
+						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
+
 	<% end %>
 
 	<div class="row">
-		<div class="col-xl-8">
+		<div class="col-xl-7">
 			<div class="card mb-4">
 				<div class="card-header">
 					<i class="fas fa-chart-bar me-1"></i>
-					<%= t(".bar_chart.title") %>
+					<strong><%= t(".bar_chart.title") %></strong>
 				</div>
 				<div class="card-body">
 					<canvas id="Co2ChartBar"
@@ -45,29 +43,31 @@
 			</div>
 		</div>
 
-		<div class="col-xl-4">
+		<div class="col-xl-5">
 			<div class="card mb-4">
 				<div class="card-header">
 					<i class="fas me-1"></i>
-					<%= t(".search_form.title") %>
+					<strong><%= t(".search_form.title") %></strong>
 				</div>
 				<div class="card-body">
 
 					<%= search_form_for @q, url: search_path, method: :get do |f| %>
-						<div>
-							<%= f.label "期間（年度）" %>
-							<%= f.select :fiscal_year_gteq, @fiscal_years, selected: params.dig(:q, :fiscal_year_gteq) || @fiscal_years.min  %>
-							<span> 〜 </span>
-							<%= f.select :fiscal_year_lteq, @fiscal_years, selected: params.dig(:q, :fiscal_year_lteq) || @fiscal_years.max  %>
-							
+						<div class="d-flex align-items-center mb-3">
+							<%= f.label :fiscal_year_gteq, "期間（年度）", class: "text-nowrap w-25" %>
+							<%= f.select :fiscal_year_gteq, @fiscal_years, { selected: params.dig(:q, :fiscal_year_gteq) || @fiscal_years.min }, { class: "form-select w-auto"}  %>
+							<span>　〜　</span>
+							<%= f.select :fiscal_year_lteq, @fiscal_years, { selected: params.dig(:q, :fiscal_year_lteq) || @fiscal_years.max }, { class: "form-select w-auto"} %>
 						</div>
 
-						<div>
-							<%= f.label :branch_id_eq, "支店名" %>
-							<%= f.collection_select :branch_id_eq, @branches, :id, :name, include_blank: "すべての支店"  %>
+						<div class="d-flex align-items-center mb-3">
+							<%= f.label :branch_id_eq, "支店名", class: "w-25" %>
+							<%= f.collection_select :branch_id_eq, @branches, :id, :name, { include_blank: "すべての支店" }, { class: "form-select w-auto"}  %>
 						</div>
 
-						<%= f.submit %>
+						<div class="text-center">
+							<%= f.submit "表示" , class: "btn btn-primary" %>
+						</div>
+
 					<% end %>
 				</div>
 			</div>
@@ -79,7 +79,7 @@
 	<div class="card mb-4">
 		<div class="card-header">
 			<i class="fas fa-table me-1"></i>
-			<%= t(".data_table.title") %>
+			<strong><%= t(".data_table.title") %></strong>
 		</div>
 		<div class="card-body">
 			<table id="datatablesSimple">
@@ -110,13 +110,13 @@
 									<td><%= stat.fiscal_year %></td>
 									<td><%= stat.branch.name %></td>
 									<td><%= stat.calculated_co2_emission.round(2) %></td>
-									<td><%= link_to "実績修正" , edit_branch_fiscal_year_stat_path(stat) %></td>
+									<td><%= link_to "実績修正" , edit_branch_fiscal_year_stat_path(stat), class: "btn btn-link btn-sm", role: "button" %></td>
 
 								<% else %>
 									<td><%= year %></td>
 									<td><%= branch.name %></td>
 									<td>データなし</td>
-									<td><%= link_to "実績登録" , new_branch_fiscal_year_stat_path(fiscal_year: year, branch_id: branch.id) %></td>
+									<td><%= link_to "実績登録" , new_branch_fiscal_year_stat_path(fiscal_year: year, branch_id: branch.id), class: "btn btn-link btn-sm", role: "button" %></td>
 
 								<% end %>
 							</tr>

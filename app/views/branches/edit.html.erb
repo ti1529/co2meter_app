@@ -1,11 +1,11 @@
 <% content_for :title, "Editing branch" %>
 
-<h1><%= t(".title") %></h1>
 
-<%= render "form", branch: @branch %>
+<div class="row justify-content-center">
+  <div class="col-sm-8">
 
-<br>
+    <h1><%= t(".title") %></h1>
+    <%= render "form", branch: @branch %>
 
-<div>
-  <%= link_to t("common.back"), branch_path(@branch) %>
+  </div>
 </div>

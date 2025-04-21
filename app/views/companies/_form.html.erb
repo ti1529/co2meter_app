@@ -1,4 +1,4 @@
-<%= form_with(model: company) do |form| %>
+<%= form_with(model: company, class: "my-4") do |form| %>
   <% if company.errors.any? %>
     <div id="error_explanation">
       <h2><%= company.errors.count %>件のエラーが発生しました </h2>
@@ -11,37 +11,53 @@
     </div>
   <% end %>
 
-  <div>
-    <span class="required-mark">※</span>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="row mb-3">
+    <div class="col-sm-4 ">
+      <%= form.label :name, class: "col-form-label" %>
+      <span class="required-mark">※</span>
+    </div>
+    <div class="col-sm-8">
+      <%= form.text_field :name, class: "form-control w-auto" %>
+    </div>
   </div>
 
-  <div>
-    <span class="required-mark">※</span>
-    <%= form.label :contact_name, style: "display: block" %>
-    <%= form.text_field :contact_name %>
+  <div class="row mb-3">
+    <div class="col-sm-4">
+      <%= form.label :contact_name, class: "col-form-control" %>
+      <span class="required-mark">※</span>
+    </div>
+    <div class="col-sm-8">
+      <%= form.text_field :contact_name, class: "form-control w-auto" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :contact_email, style: "display: block" %>
-    <%= form.email_field :contact_email %>
+  <div class="row mb-3">
+    <%= form.label :contact_email, class: "col-sm-4 col-form-control" %>
+    <div class="col-sm-8">
+      <%= form.email_field :contact_email, class: "form-control w-auto" %>
+    </div>
   </div>
 
-  <div>
-    <span class="required-mark">※</span>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.select :status,
-      Company.statuses.keys.map { |key| [Company.statuses_i18n[key],key]}
-    %>
+  <div class="row mb-3">
+    <div class="col-sm-4">
+      <%= form.label :status, class: "col-form-control" %>
+      <span class="required-mark">※</span>
+    </div>
+    <div class="col-sm-8">
+      <%= form.select :status,
+        Company.statuses.keys.map { |key| [Company.statuses_i18n[key],key]}, {}, { class: "form-control w-auto"}
+      %>
+    </div>
+
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="text-center my-4">
+    <%= form.submit class: "btn btn-primary" %>
+    <%= link_to t("common.back"), company_path(company), class: "btn btn-outline-secondary ms-3" if controller.action_name == "edit" %>
+
+    <p>
+      <span class="required-mark">※</span>
+      がある項目は入力必須です
+    </p>
   </div>
 <% end %>
-
-<p>
-<span class="required-mark">※</span>
-がある項目は入力必須です
-</p>
