@@ -1,20 +1,24 @@
+<div class="d-flex flex-column align-items-center">
+
+
+<h1><%= t("common.app_title") %></h1>
 <h2><%= t('.sign_in') %></h2>
 
-<p>
+<div class="text-bg-light fs-5 p-4 my-4">
   本アプリは、複数の拠点を持つ企業様に向けて、<br>
   <strong>従業員の通勤によるCO2排出量</strong>の<br>
   簡易な算定・集計をサポートいたします。
-</p>
+</div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="field mb-3">
+    <%= f.label :email, class: "form-label" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control w-auto" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.label :password, class: "form-label" %><br />
+    <%= f.password_field :password, autocomplete: "current-password", class: "form-control w-auto" %>
   </div>
 
   <% if devise_mapping.rememberable? %>
@@ -24,9 +28,13 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit t('.sign_in'), id: "sign-in" %>
+  <div class="actions text-center my-4">
+    <%= f.submit t('.sign_in'), id: "sign-in", class: "btn btn-primary" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+
+
+</div>

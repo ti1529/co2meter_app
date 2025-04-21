@@ -66,7 +66,7 @@ class BranchesController < ApplicationController
 
     if prefecture.present? && city.present?
       # @chat_response = ChatgptService.new.get_city_category(prefecture, city)
-      @chat_response = "テスト中" # （仮）テスト完了後、修正する
+      @chat_response = "千葉市　大都市" # （仮）テスト完了後、修正する
 
       render :new
     else
