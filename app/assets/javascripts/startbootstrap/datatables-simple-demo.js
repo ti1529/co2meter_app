@@ -14,7 +14,9 @@ window.addEventListener('DOMContentLoaded', event => {
       },
       columns: [
         { select: 0, sort: "desc"},
-        { select: 2, filter: ["データなし"]}
+        { select: 2, filter: ["データなし"]},
+        { select: [0,1,2,3], headerClass: "table-light"},
+        { select: [0,1,2,4], cellClass: "align-middle" }
       ],
       searchable: false,
       fixedHeight: true,

@@ -5,7 +5,7 @@ ja:
     index:
       title: ダッシュボード
       bar_chart:
-        title: CO2排出量の年度推移
+        title: 年度ごとのCO2排出量
       search_form:
         title: 表示条件
       data_table:

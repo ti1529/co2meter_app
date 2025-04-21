@@ -23,9 +23,6 @@ var myLineChart = new Chart(ctx, {
     }],
   },
   options: {
-    // responsive: false,
-    // maintainAspectRatio: false,
-  
     scales: {
       xAxes: [{
         gridLines: {
