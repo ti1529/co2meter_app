@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "BranchFiscalYearStats", type: :system, selenium: true do
+RSpec.describe "支店実績の管理機能", type: :system, selenium: true do
   include LoginMacro
 
   let!(:user) { FactoryBot.create(:user) }

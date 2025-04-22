@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Co2EmissionFactors", type: :system, selenium: true do
+RSpec.describe "CO2排出係数の管理機能", type: :system, selenium: true do
   include LoginMacro
 
   let!(:admin) { FactoryBot.create(:admin) }
