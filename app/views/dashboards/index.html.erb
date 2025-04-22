@@ -77,7 +77,7 @@
 			<strong><%= t(".data_table.title") %></strong>
 		</div>
 		<div class="card-body" style="min-height: 600px;">
-			<p class="text-muted small text-end">「CO2排出量（ton）」をクリックすると、「データなし」のみが表示されます</p>
+			<p class="small text-end">「CO2排出量（ton）」をクリックすると、「データなし」のみが表示されます</p>
 			<table id="datatablesSimple">
 				<thead>
 					<tr>
@@ -99,7 +99,7 @@
 
 					<% @selection_branches.each do |branch| %>
 						<% @selection_fiscal_years.each do |year| %>
-							<% stat = branch.branch_fiscal_year_stats.find_by(fiscal_year: year) %>
+							<% stat = @stats_by_branch_and_year[[branch.id, year]] %>
 							<tr>
 								<% if stat.present? %>
 

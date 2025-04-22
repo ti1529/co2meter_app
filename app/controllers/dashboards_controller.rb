@@ -10,6 +10,8 @@ class DashboardsController < ApplicationController
                                   .includes(:branch, :updater)
                                   .where(branches: { company_id: current_user.company.id })
 
+    @stats_by_branch_and_year = @branch_fiscal_year_stats.index_by { |stat| [ stat.branch_id, stat.fiscal_year ] }
+
     @selection_fiscal_years = @branch_fiscal_year_stats.group_by(&:fiscal_year).keys
     @selection_branches = Branch.where(id: @branch_fiscal_year_stats.group_by(&:branch_id).keys)
 
