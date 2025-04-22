@@ -32,12 +32,11 @@ class BranchFiscalYearStatsController < ApplicationController
 
   # POST /branch_fiscal_year_stats or /branch_fiscal_year_stats.json
   def create
-    # @branch_fiscal_year_stat = BranchFiscalYearStat.new(branch_fiscal_year_stat_params)
     @branch_fiscal_year_stat = current_user.branch_fiscal_year_stats.new(branch_fiscal_year_stat_params)
 
     respond_to do |format|
       if @branch_fiscal_year_stat.save
-        format.html { redirect_to branch_fiscal_year_stats_path, notice: t(".notice") }
+        format.html { redirect_to branch_fiscal_year_stats_path(q: { branch_id_eq: @branch_fiscal_year_stat.branch.id }), notice: t(".notice") }
         format.json { render :index, status: :created, location: @branch_fiscal_year_stat }
       else
         @branches = current_user.company.branches
@@ -51,7 +50,7 @@ class BranchFiscalYearStatsController < ApplicationController
   def update
     respond_to do |format|
       if @branch_fiscal_year_stat.update(branch_fiscal_year_stat_params)
-        format.html { redirect_to branch_fiscal_year_stats_path, notice: t(".notice") }
+        format.html { redirect_to branch_fiscal_year_stats_path(q: { branch_id_eq: @branch_fiscal_year_stat.branch.id }), notice: t(".notice") }
         format.json { render :index, status: :ok, location: @branch_fiscal_year_stat }
       else
         @branches = current_user.company.branches
@@ -63,10 +62,11 @@ class BranchFiscalYearStatsController < ApplicationController
 
   # DELETE /branch_fiscal_year_stats/1 or /branch_fiscal_year_stats/1.json
   def destroy
+    branch_id = @branch_fiscal_year_stat.branch.id
     @branch_fiscal_year_stat.destroy!
 
     respond_to do |format|
-      format.html { redirect_to branch_fiscal_year_stats_path, status: :see_other, notice: t(".notice") }
+      format.html { redirect_to branch_fiscal_year_stats_path(q: { branch_id_eq: branch_id }), status: :see_other, notice: t(".notice") }
       format.json { head :no_content }
     end
   end

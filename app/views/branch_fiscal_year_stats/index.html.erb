@@ -23,7 +23,7 @@
 
   <div class="col-sm-auto d-flex flex-column ms-4">
     <%= f.label :branch_id_eq, "支店名", class: "col-form-label" %>
-    <%= f.collection_select :branch_id_eq, @branches, :id, :name, { include_blank: "指定なし" }, { class: "form-select w-auto" }  %>
+    <%= f.collection_select :branch_id_eq, @branches, :id, :name, { include_blank: "すべての支店" }, { class: "form-select w-auto" }  %>
   </div>
 
   <div class="col-sm-auto d-flex align-items-center ms-4">
