@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Dashboards", type: :system, selenium: true do
+RSpec.describe "ダッシュボード画面", type: :system, selenium: true do
   include LoginMacro
 
   let!(:user) { FactoryBot.create(:user) }

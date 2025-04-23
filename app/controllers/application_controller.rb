@@ -10,11 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if current_user.admin?
-      companies_path
-    else
-      root_path
-    end
+    root_path
   end
 
   def after_sign_out_path_for(resource_or_scope)

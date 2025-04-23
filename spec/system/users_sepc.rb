@@ -176,4 +176,32 @@ RSpec.describe 'ユーザ管理機能', type: :system, selenium: true do
       end
     end
   end
+
+  describe '異なる企業データへのアクセス制限' do
+    let!(:company_2) { FactoryBot.create(:company) }
+    let!(:branch_2) { FactoryBot.create(:branch, company: company_2) }
+    let!(:branch_fiscal_year_stat_2) { FactoryBot.create(:branch_fiscal_year_stat, branch: branch_2) }
+
+    before do
+      login_as(user)
+    end
+
+    describe '異なる企業の支店編集画面へアクセスした場合' do
+      it 'ダッシュボード画面に遷移し、「アクセス権限がありません」というメッセージが表示される' do
+        visit edit_branch_path(branch_2)
+
+        expect(page).to have_content "アクセス権限がありません"
+        expect(page).to have_selector "h1", text: "ダッシュボード"
+      end
+    end
+
+    describe '異なる企業の支店実績の編集画面へアクセスした場合' do
+      it 'ダッシュボード画面に遷移し、「アクセス権限がありません」というメッセージが表示される' do
+        visit edit_branch_fiscal_year_stat_path(branch_fiscal_year_stat_2)
+
+        expect(page).to have_content "アクセス権限がありません"
+        expect(page).to have_selector "h1", text: "ダッシュボード"
+      end
+    end
+  end
 end

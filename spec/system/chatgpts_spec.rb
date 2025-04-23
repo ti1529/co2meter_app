@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Chatgpts", type: :system, selenium: true do
+RSpec.describe "ChatGPTの問い合わせ機能", type: :system, selenium: true do
   include LoginMacro
 
   let!(:user) { FactoryBot.create(:user) }
