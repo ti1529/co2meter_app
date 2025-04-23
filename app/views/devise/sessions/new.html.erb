@@ -35,6 +35,10 @@
 
 <%= render "devise/shared/links" %>
 
+<div class="d-flex">
+  <%= link_to "ゲストログイン（一般）", users_guest_sign_in_path, method: :post, class: "btn btn-outline-dark" %>
+  <%= link_to "ゲストログイン（管理者）", users_guest_admin_sign_in_path, method: :post, class: "btn btn-outline-dark ms-3" %>
 
+</div>
 
 </div>
