@@ -24,7 +24,7 @@ $ rails s
 [https://cacoo.com/diagrams/Va0mRpMhJrJH3vDd/3A1F3](https://cacoo.com/diagrams/Va0mRpMhJrJH3vDd/3A1F3)
 
 ## ER図
-![Image](https://github.com/user-attachments/assets/05acd151-011a-4486-a139-ecf69bf76786)
+![Image](https://github.com/user-attachments/assets/633367a5-23be-45e7-8c53-d693a538cd7c)
 
 ## 画面遷移図
 ![Image](https://github.com/user-attachments/assets/65718c1b-5c94-4c51-98dc-6daa3fd96e27)
