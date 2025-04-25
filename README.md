@@ -34,6 +34,8 @@ $ rails s
 
 ## アプリ紹介
 
-[発表資料リンク](https://www.canva.com/design/DAGlamfImRE/_uu1hkQHU7ufDC7X-qJcBQ/edit?utm_content=DAGlamfImRE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+[資料リンク](https://www.canva.com/design/DAGln4agauI/u4ck88lSmdvRlYye2axfrg/edit?utm_content=DAGln4agauI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
-アプリ紹介はP5-9になります。
+目次
+1. アプリ紹介
+2. 基本機能の紹介
