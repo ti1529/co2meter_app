@@ -34,4 +34,4 @@ $ rails s
 
 ## 発表資料
 [https://www.canva.com/design/DAGlamfImRE/_uu1hkQHU7ufDC7X-qJcBQ/edit?utm_content=DAGlamfImRE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton]
-(https://www.canva.com/design/DAGlamfImRE/_uu1hkQHU7ufDC7X-qJcBQ/edit?utm_content=DAGlamfImRE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+アプリ紹介はP5-9になります。
